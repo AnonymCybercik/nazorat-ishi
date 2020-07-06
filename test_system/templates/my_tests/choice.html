@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'my_tests:choice' user_id %}" method="POST">
+
+    {% csrf_token %}
+
+<select name="sinf" >
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+
+</select>
+
+
+<select name="fanlar">
+    <option value="Adabiyot">Adabiyot</option>
+    <option value="Ona tili">Ona tili</option>
+    <option value="Fizika">Fizika</option>
+    <option value="Algebra">Algebra</option>
+    <option value="Rus tili">Rus tili</option>
+    <option value="Kimyo">Kimyo</option>
+    <option value="Biologiya">Biologiya</option>
+    <option value="Informatika">Informatika</option>
+    <option value="Ingliz tili">Ingliz tili</option>
+    <option value="Geometriya">Geometriya</option>
+</select>
+
+<button type="submit">davom etish</button>
+
+</form>
+
+{% endblock %}

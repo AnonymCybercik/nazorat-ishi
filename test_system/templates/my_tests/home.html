@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{%  static 'E:\projects\django\test system\my test site\test_system\static\css\home.css' %}">
+
+<div class="top">
+    <div class="container">   
+        
+    
+    <a href="{% url 'my_tests:student_login' %}">test ishlash</a>
+        <a href="{% url 'my_tests:user_login' %}">test qo`shish</a>
+    </div>
+</div>
+
+<nav class="table">
+    <p class="element ">Testlar soni : </p><p class="element ">O`quvchilar : </p>
+    <p class="element num">{{ tests }}</p><p class="element num">{{ studensts }}</p>
+</nav>
+
+
+
+
+
+{% endblock %}

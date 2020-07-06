@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Test qo`shish{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
+
+    {% csrf_token %}
+
+    <textarea name="question" cols="30" rows="10" placeholder="savolni kiriting"></textarea>
+    <br>
+    <input type="text" name ='A'><br>
+    <input type="text" name ='B'><br>
+    <input type="text" name ='C'><br>
+    <input type="text" name ='D'><br>
+    <select name="answer" >
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+    </select>
+    <button type="submit">saqlash</button>
+</form>
+
+
+
+{% endblock %}

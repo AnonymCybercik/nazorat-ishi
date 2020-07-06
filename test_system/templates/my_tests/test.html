@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+
+
+    {% csrf_token %}
+    {% if testlar %}
+    
+
+        <form action="{% url 'my_tests:test' student_id test_id %}" method="POST">
+            {% for a in testlar %}
+                {% csrf_token %}
+                {{ a.question }}<br>
+                <input type="radio" name="{{a.question}}" value="A"> {{ a.A }}<br>
+                <input type="radio" name="{{a.question}}" value="B"> {{ a.B }}<br>
+                <input type="radio" name="{{a.question}}" value="C"> {{ a.C }}<br>
+                <input type="radio" name="{{a.question}}" value="D"> {{ a.D }}<br>
+
+            {% endfor %}
+            <button type="submit">testni tugatish</button>
+        </form>
+    
+    {% else %}
+
+    <h1>test mavjud emas</h1>
+
+    
+
+{% endif %}
+
+
+
+{% endblock %}

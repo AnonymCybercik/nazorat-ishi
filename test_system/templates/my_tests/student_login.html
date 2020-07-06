@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Tizimga kirish{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{%  static 'C:\Users\хп\projects\django\test system\my test site\test_system\static\css\style.css' %}">
+
+<section class="login-page">
+    <form action="{% url 'my_tests:student_login' %}" method="POST">
+         <div class="box">
+                <div class="form-head">
+                      <h2>Ro'yxatdan O'tish</h2>
+                </div>
+                <div class="form-body">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="username" autocomplete="off"><br>
+                    <input name="password" type="password" placeholder="password"><br>
+                </div>
+                <div class="form-footer">
+                      <button type="submit">Sign In</button>
+                </div>
+         </div>
+    </form>
+</section>
+<form >
+
+</form>
+
+
+
+
+{% endblock %}

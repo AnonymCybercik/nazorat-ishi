@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+
+<form action="{% url 'my_tests:search' user_id %}" method="POST">
+
+        {% csrf_token %}
+
+<select name="grade" >
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+</select>
+<select name="grade" >
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="V">V</option>
+    <option value="G">G</option>
+    <option value="D">D</option>
+</select>
+
+<input type="text" name="school" placeholder="school" autocomplete="off">
+<select name="viloyat">
+    <option value="jizzax shaxar">jizzax shaxar</option>
+    <option value="Arnasoy">Arnasoy</option>
+    <option value="Baxmal">Baxmal </option>
+    <option value="Do'stlik">Do'stlik </option>
+    <option value="Sharof Rashidov">Sharof Rashidov</option>
+    <option value="Zarbdor">Zarbdor</option>
+    <option value="Zafarobod">Zafarobod</option>
+    <option value="Zomin">Zomin</option>
+    <option value="Mirzacho'l">Mirzacho'l</option>
+    <option value="Paxtakor">Paxtakor</option>
+    <option value="Yangiobod">Yangiobod</option>
+    <option value="Forish">Forish</option>
+    <option value="G'allaorol">G'allaorol</option>
+</select><br>
+
+<button type='submit'>search</button>
+
+</form>
+{% if students %}
+{% for student in students %}
+
+    <a href="#">{{ student.first_name }} {{student.last_name}}</a>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

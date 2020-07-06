@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('../img/home.jpg');
+}
+
+
+a{
+    text-decoration: none;
+    color: white;
+    font-style: oblique;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.top{
+    text-decoration: none;
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    body{
+        background-size: cover;
+        background-image: url('../img/home-mobile.jpg');
+    }
+    a{
+        position: relative;
+        left: 50%;
+    }
+    .element{
+        font-size: 12px;
+        padding: 0;    
+    }
+    .table{
+    position: absolute;
+    transform: translate(50,50%);
+        left:-50%;
+    }
+}
+
+.container{
+    background-color: black;
+    position: relative;
+    line-height: 40px;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+.table{
+    position: absolute;
+    width: 50%;
+    height: 25%;
+    text-align: center;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.element{
+    position: relative;
+    display: inline;
+    font-weight: bold;
+    font-family:serif;
+    padding:60px 40px;
+    font-size:24px;
+    line-height: 25vh;
+    height: 100%;
+    margin: 20px;
+    background-color: black;
+    color: rgb(255, 232, 23);
+    opacity: 0.9;
+}
+.num{
+    display: inline;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size:36px;
+    font-family:serif;
+    background: none;
+    padding: 0 100px;
+    top: -75%;
+}
