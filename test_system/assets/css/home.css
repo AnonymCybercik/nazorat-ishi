@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-image: url('../img/home.jpg');
+}
+
+
+a{
+    text-decoration: none;
+    color: white;
+    font-style: oblique;
+    padding: 10px;
+    font-size: 50px;
+    
+}
+
+.top{
+    text-decoration: none;
+    color: white;
+    left: 50%;
+    
+    transform: translate(-50%,0);
+    font-style: oblique;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    body{
+        background-size: cover;
+        background-image: url('../img/home-mobile.jpg');
+    }
+    a{
+        position: relative;
+        left: 50%;
+    }
+}
+
+.container{
+    background-color: black;
+    position: relative;
+    line-height: 70px;
+}
+
