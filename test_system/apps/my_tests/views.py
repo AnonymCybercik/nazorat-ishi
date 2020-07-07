@@ -204,15 +204,15 @@ def test(request,student_id,test_id):
 def search(request,user_id):
 
     grade = request.POST.get('grade')
-    school = request.POST.get('school')
+    school_data = request.POST.get('school')
     viloyat = request.POST.get('viloyat')
-
-    students = Student.objects.filter(grade = grade,school = school,viloyat = viloyat)
+    print(school_data)
+    students = Student.objects.filter(grade = grade,school = school_data,viloyat = viloyat)
 
     context = {
 
         "students":students,
-        "user_id":user_id
+        "user_id":user_id,
 
     }
 
