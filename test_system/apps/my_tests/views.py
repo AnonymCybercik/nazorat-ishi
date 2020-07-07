@@ -102,7 +102,7 @@ def home(request):
 
 def user_logout(request,user_id):
     logout(request)
-    return HttpResponseRedirect(reverse("my_tests:user_login"))
+    return HttpResponseRedirect(reverse("my_tests:home"))
 
 def student_login(request):
     username = request.POST.get('username')
