@@ -189,7 +189,8 @@ def test(request,student_id,test_id):
         print(data,a.answer)
         if data == a.answer:
             t+=1
-            return HttpResponse('to`g`ri javoblar: '+str(t))
+    if data or data == None:
+        return HttpResponse('to`g`ri javoblar: '+str(t))
     
 
     context = {
