@@ -4,6 +4,10 @@
 
 {% block content %}
 
+<a href="{% url 'my_tests:admin' user_id %}">home</a>
+<a href="{% url 'my_tests:register' user_id %}">o`quvchi qo`shish</a>
+<a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
+
 <form action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
 
     {% csrf_token %}
