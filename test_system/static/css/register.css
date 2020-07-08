@@ -1,0 +1,144 @@
+body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url(../img/summer_bg.jpg);
+    background-size: cover;
+    font-family: sans-serif;
+}
+a{
+
+    text-decoration: none;
+    color: white;
+    font-style: oblique;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.top{
+    background-color: black;
+    position: relative;
+    line-height: 40px;
+    padding: 10px;
+    opacity: 0.7;
+    margin: 0;
+
+}
+.container{
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    top: 15%;
+    left: 32%;
+    translate: (-50%,-50%);
+    border-radius: 5px;
+    border-color: rgb(12, 206, 12);
+    background: #ffffff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 2px solid  rgb(12, 206, 12) ;
+    box-shadow: 
+    -3px -2px 15px 0px #000, 3px 2px 15px 0px #000;
+    background: #ffffff;
+    padding: 30px;
+    margin: 0;
+}
+.container::after{
+    border: 1px solid rgb(11, 173, 11);
+    top:3px;
+    left: 3px;
+    right: 3px;
+    bottom: -320px;
+    position: absolute;
+}
+.inputs{
+display: flex;
+flex-direction: column;
+margin-right: 15px;
+margin-left: 15px;
+}
+input{
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid;
+    padding: 7px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-color:  rgb(12, 206, 12);
+    outline: none;
+    background:#ffffff;
+}
+select{
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+    font-size: 16px;
+    margin-top: 5px;
+    border-color:  rgb(12, 206, 12) ;
+}
+.select1{
+    width: 80%;
+}
+.select2{
+    width: 60%;
+}
+.select3{
+    width: 95%;
+}
+button{
+    width: 200px;
+    height: 55px;
+    margin-top: 20px;
+    background-color:  #01e701;
+    border: 1px solid  rgb(10, 187, 10);
+    color: #ffffff;
+    font-size: medium;
+    font-family: sans-serif;
+    display: inline-block;
+    margin-left: 75px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
+.form_head{
+    text-align: center;
+}
+.form_body2{
+margin-top: 10px;    
+}
+h1{
+    border-bottom: 1.5px solid;
+    border-color:  rgb(12, 206, 12) ;
+    color:  rgb(12, 206, 12);
+}
+p{
+    color: gray;
+}
+label{
+    margin-top: 10px;
+}
+.from_footer{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.select1{
+    display: inline-block;
+    width: 165px;
+}
+.select2{
+    display: inline-block;
+    width: 165px;
+}
+

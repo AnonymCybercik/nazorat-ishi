@@ -1,62 +1,96 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Registration{% endblock %}
 
 {% block content %}
-<a href="{% url 'my_tests:admin' user_id %}">home</a>
-<a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
+<div class="top">  
+        <a href="{% url 'my_tests:admin' user_id %}">home</a>
+        <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
+</div>
 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css\register.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form">
+                <form action="{% url 'my_tests:register' user_id %}" method="POST">
+                    <div class="inputs">
+                        <div class="form_head">
+                            <h1>Beautiful Mind</h1>
+                            <p>Recruitment</p>
+                        </div>
+                        <div class="form_body">
+                            {% csrf_token %}
+                            {% if error == 'all' %}
+                                <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
+                            {% endif %}
+                            <label for="user_name">Your name</label>
+                            <input type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
+                            <input type="text" name="last_name"  autocomplete="off" placeholder="Last name">
+                        </div>
+                        <div class="form_body2">
+                            <label for="grade">Enter your class</label>
+                        <select name="grade" id="" class="select1">
+                            <option value="">9</option>
+                            <option value="">10</option>
+                            <option value="">11</option>
+                        </select>
+                        <select name="grade" id="" class="select2">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="V">V</option>
+                            <option value="G">G</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label for="viloyat">Enter your position</label>
+                        <select name="viloyat" id="" class="select3">
+                            <option value="jizzax shaxar">jizzax shaxar</option>
+                            <option value="Arnasoy">Arnasoy tumani</option>
+                            <option value="Baxmal">Baxmal tumani</option>
+                            <option value="Do'stlik">Do'stlik tumani</option>
+                            <option value="Sharof Rashidov">Sharof Rashidov tumani</option>
+                            <option value="Zarbdor">Zarbdor tumani</option>
+                            <option value="Zafarobod">Zafarobod tumani</option>
+                            <option value="Zomin">Zomin tumani</option>
+                            <option value="Mirzacho'l">Mirzacho'l tumani</option>
+                            <option value="Paxtakor">Paxtakor tumani</option>
+                            <option value="Yangiobod">Yangiobod tumani</option>
+                            <option value="Forish">Forish tumani</option>
+                            <option value="G'allaorol">G'allaorol tumani</option>
+                        </select>
+                        </div>
+                        <div class="form_footer">
+                            <label for="school">Enter your school name</label>
+                            <input type="text" placeholder="School" name="school" autocomplete="off">
+                            <label for="username">Username</label> 
+                            <input type="text" name="username" placeholder="Username">
+                            {% if error == 'inusername' %}
+                                <p style="color: red;">bu username avval qo`llangan</p>
+                            {% endif %}
+                            <label for="password">Password</label>
+                            <input type="password" name="text" value="{{ repas }}"  autocomplete="off" placeholder="Enter your password">
+                            <input type="validator" name="text" value="{{ repas }}" autocomplete="off"  placeholder="re-enter the password"> 
+                            {% if error == 'inpass' %}
+                                <p style="color: red;">parollar bir xil emas</p>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="start">START</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 
 <form action="{% url 'my_tests:register' user_id %}" method="POST">
-
-
-    {% csrf_token %}
-    {% if error == 'all' %}
-        <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
-    {% endif %}
-    <input name="first_name" type="text" placeholder="first name" autocomplete="off"><br>
-    <input name="last_name" type="text" placeholder="last name" autocomplete="off"><br>
-    <select name="grade" >
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-    </select>
-    <select name="grade" >
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="D">D</option>
-    </select>
-    
-    <select name="viloyat">
-        <option value="jizzax shaxar">jizzax shaxar</option>
-        <option value="Arnasoy">Arnasoy</option>
-        <option value="Baxmal">Baxmal </option>
-        <option value="Do'stlik">Do'stlik </option>
-        <option value="Sharof Rashidov">Sharof Rashidov</option>
-        <option value="Zarbdor">Zarbdor</option>
-        <option value="Zafarobod">Zafarobod</option>
-        <option value="Zomin">Zomin</option>
-        <option value="Mirzacho'l">Mirzacho'l</option>
-        <option value="Paxtakor">Paxtakor</option>
-        <option value="Yangiobod">Yangiobod</option>
-        <option value="Forish">Forish</option>
-        <option value="G'allaorol">G'allaorol</option>
-    </select><br>
-    <input type="text" name="school" placeholder="school" autocomplete="off"><br>
-    <input name="username" type="text" placeholder="username" autocomplete="off"><br>
-    {% if error == 'inusername' %}
-        <p style="color: red;">bu username avval qo`llangan</p>
-    {% endif %}
-    <input name="password" type="text" value="{{recpas}}" placeholder="password"><br>
-    <input name="validator" type="text" value="{{recpas}}" placeholder="password"><br>
-    {% if error == 'inpass' %}
-        <p style="color: red;">parollar bir xil emas</p>
-    {% endif %}
-
-    <button type="submit" >ro`yhatdan o`tish</button>
-
-</form>
-
 
 
 
