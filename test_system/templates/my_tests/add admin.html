@@ -10,16 +10,18 @@
 
 <section class="login-page">
     <form action="{% url 'my_tests:add_admin' user_id %}" method="POST">
+        {% csrf_token %}
+
          <div class="box">
                 <div class="form-head">
                       <h2>Ro'yxatdan O'tish</h2>
                 </div>
                 <div class="form-body">
-                    {% csrf_token %}
                     <input name="username" type="text" placeholder="username" autocomplete="off"><br>
                     <input name="password" type="password" placeholder="password"><br>
-                    <input type="checkbox" name="add_test"><br>
-                    <input type="checkbox" name="add_studend">
+                    <input name="validator" type="password" placeholder="re-enter password"><br>
+                    <input type="checkbox" name="add_test" value="True"><br>
+                    <input type="checkbox" name="add_student" value="True">
                 </div>
                 <div class="form-footer">
                       <button type="submit">Sign In</button>

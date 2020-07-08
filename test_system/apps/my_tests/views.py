@@ -86,11 +86,16 @@ def user_login(request):
             if i.username == username:
                 if i.password == password:
                     return HttpResponseRedirect(reverse("my_tests:student_choice",args=(i.id,)))
-    else:
         for i in b:
             if i.username == username:
                 if i.password == password:
-                    return HttpResponseRedirect(reverse("my_tests:student_choice",args=(i.id,)))
+                    if i.add_test == True:
+                        return HttpResponseRedirect(reverse("my_tests:choice",args=(i.id,)))
+        for i in b:
+            if i.username == username:
+                if i.password == password:
+                    if i.add_student == True:
+                        return HttpResponseRedirect(reverse("my_tests:register",args=(i.id,)))
 
     
     context = {
@@ -101,6 +106,19 @@ def user_login(request):
     return render(request,'my_tests/login.html',context)
 
 def add_admin(request,user_id):
+
+    data_test = request.POST.get('add_test')
+    data_student = request.POST.get('add_student')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    validator = request.POST.get('validator')
+
+    if username:
+        if data_test or data_student:
+            if password == validator:
+                a = Admin(username = username,password = password,add_test = data_test,add_student = data_student)
+                a.save()
+
 
     context = {
         "user_id":user_id

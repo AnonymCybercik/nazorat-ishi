@@ -5,8 +5,7 @@ from . import views
 app_name = 'my_tests'
 
 urlpatterns = [
-    path('',views.home,name = 'home'),
-    path('login/',views.user_login,name = 'user_login'),
+    path('',views.user_login,name = 'user_login'),
     path('/<int:user_id>/students',views.search,name = 'search'),
     path('/<int:user_id>/regsiter',views.generate,name = 'generate'),
     path('/<int:user_id>/admin',views.admin,name = 'admin'),
