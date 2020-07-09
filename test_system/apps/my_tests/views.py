@@ -27,6 +27,7 @@ def register(request,user_id):
     for student in students:
         usernames.append(student.username)
     
+    admin = Admin.objects.get(id = user_id)
 
     full = ''
 
@@ -45,6 +46,8 @@ def register(request,user_id):
 
         "user_id":user_id,
         "error":full,
+        "add_student":admin.add_student
+
 
     }
 
@@ -143,7 +146,7 @@ def home(request):
 
 def user_logout(request,user_id):
     logout(request)
-    return HttpResponseRedirect(reverse("my_tests:home"))
+    return HttpResponseRedirect(reverse("my_tests:user_login"))
 
 def choice(request,user_id):
 
@@ -166,17 +169,15 @@ def choice(request,user_id):
     return render(request,'my_tests/choice.html',context)
 
 def add_test(request,user_id,test_id):
-    context = {
+    
 
-        "user_id":user_id,
-        "test_id":test_id
-
-    }
+    admin = Admin.objects.get(id = user_id)
 
     A = request.POST.get('A')
     B = request.POST.get('B')
     C = request.POST.get('C')
     D = request.POST.get('D')
+
     question = request.POST.get('question')
     answer = request.POST.get('answer')
 
@@ -184,6 +185,14 @@ def add_test(request,user_id,test_id):
 
     if A and B and C and question and answer:
         tests.test_set.create(question = question,answer = answer, A = A, B = B,C = C,D=D)
+
+    context = {
+
+        "user_id":user_id,
+        "test_id":test_id,
+        "add_tests":admin.add_test,
+
+    }
 
     return render(request,'my_tests/add_test.html',context)
 

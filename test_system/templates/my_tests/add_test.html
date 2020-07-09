@@ -3,9 +3,14 @@
 {% block title %}Test qo`shish{% endblock %}
 
 {% block content %}
+{{add_tests}}
+{% if not add_tests %}
+
 
 <a href="{% url 'my_tests:admin' user_id %}">home</a>
 <a href="{% url 'my_tests:register' user_id %}">o`quvchi qo`shish</a>
+
+{% endif %}
 
 <form action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
 
