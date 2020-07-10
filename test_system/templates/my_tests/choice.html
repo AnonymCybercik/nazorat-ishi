@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<!-- CSS uchin lik -->
+<link rel="stylesheet" href="{% static '' %}">
+
 <form action="{% url 'my_tests:choice' user_id %}" method="POST">
 
     {% csrf_token %}

@@ -6,12 +6,7 @@
 
 {% block content %}
 
-{% if not add_student %}
-<div class="top">  
-        <a href="{% url 'my_tests:admin' user_id %}">home</a>
-        <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
-</div>
-{% endif %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +14,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <!-- CSS uchin lik -->
         <link rel="stylesheet" href="{% static 'css\register.css' %}">
+
+        
     </head>
     <body>
+        {% if not add_student %}
+        <div class="top">  
+                <a href="{% url 'my_tests:admin' user_id %}">home</a>
+                <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
+        </div>
+        {% endif %}
         <div class="container">
             <div class="form">
                 <form action="{% url 'my_tests:register' user_id %}" method="POST">
