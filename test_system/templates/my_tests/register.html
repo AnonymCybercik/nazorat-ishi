@@ -28,8 +28,8 @@
         </div>
         {% else %}
         <div class="top">  
-            <a href="#">home</a>
-            <a href="#">test qo`shish</a>
+            <a href="">home</a>
+            <a href="">test qo`shish</a>
     </div>
         {% endif %}
         <div class="container">
@@ -38,20 +38,20 @@
                     <div class="inputs">
                         <div class="form_head">
                             <h1>O`quvchi qo`shish</h1>
-                            <p>Recruitment</p>
+                            <p>Requirments</p>
                         </div>
                         <div class="form_body">
                             {% csrf_token %}
                             {% if error == 'all' %}
                                 <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
                             {% endif %}
-                            <label for="user_name">Your name</label>
+                            <label for="user_name">Ims && Familyani kiriting</label>
                             <input type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
                             <input type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
                         
-                            <label for="grade">Enter your class</label>
+                            <label for="grade">Sinfni kiriting</label>
                         <select name="grade" id="" class="select1">
                             <option value="">9</option>
                             <option value="">10</option>
@@ -64,7 +64,7 @@
                             <option value="G">G</option>
                             <option value="D">D</option>
                         </select>
-                        <label for="viloyat">Enter your position</label>
+                        <label for="viloyat">Viloyatni kiriting</label>
                         <select name="viloyat" id="" class="select3">
                             <option value="jizzax shaxar">jizzax shaxar</option>
                             <option value="Arnasoy">Arnasoy tumani</option>
@@ -82,14 +82,14 @@
                         </select>
                         </div>
                         <div class="form_footer">
-                            <label for="school">Enter your school name</label>
+                            <label for="school">Maktab raqamini kiriting</label>
                             <input type="text" placeholder="School" name="school" autocomplete="off">
-                            <label for="username">Username</label> 
+                            <label for="username">Usernameni kiriting</label> 
                             <input type="text" name="username" placeholder="Username">
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
-                            <label for="password">Password</label>
+                            <label for="password">Parolni kiriting</label>
                             <input type="password" name="text" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
                             <input type="validator" name="text" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
                             {% if error == 'inpass' %}
@@ -97,8 +97,8 @@
                             {% endif %}
                         </div>
                         <div>
-                        <button type="submit" class="start">save</button>
-                        <button class="reset" type="reset">cancel</button>
+                        <button type="submit" class="start">Saqlash</button>
+                        <button class="reset" type="reset">Bekor qilish</button>
                     </div>
                     </div>
                 </form>

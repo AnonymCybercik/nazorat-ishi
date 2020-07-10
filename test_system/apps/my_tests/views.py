@@ -75,9 +75,9 @@ def admin(request,user_id):
     }
 
     return render(request,"my_tests/admin.html",context)
-def edit_admin(request,user_id):
+def edit(request,user_id):
     context = {
-
+        "user_id":user_id
     }
 
     return render(request,'my_tests/edit-admin.html',context)
