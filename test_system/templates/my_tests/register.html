@@ -18,7 +18,7 @@
         <!-- CSS uchin lik -->
         <link rel="stylesheet" href="{% static 'css\register.css' %}">
 
-        
+
     </head>
     <body>
         {% if not add_student %}
@@ -26,13 +26,18 @@
                 <a href="{% url 'my_tests:admin' user_id %}">home</a>
                 <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
         </div>
+        {% else %}
+        <div class="top">  
+            <a href="#">home</a>
+            <a href="#">test qo`shish</a>
+    </div>
         {% endif %}
         <div class="container">
             <div class="form">
                 <form action="{% url 'my_tests:register' user_id %}" method="POST">
                     <div class="inputs">
                         <div class="form_head">
-                            <h1>Beautiful Mind</h1>
+                            <h1>O`quvchi qo`shish</h1>
                             <p>Recruitment</p>
                         </div>
                         <div class="form_body">
@@ -45,6 +50,7 @@
                             <input type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
+                        
                             <label for="grade">Enter your class</label>
                         <select name="grade" id="" class="select1">
                             <option value="">9</option>
@@ -90,14 +96,15 @@
                                 <p style="color: red;">parollar bir xil emas</p>
                             {% endif %}
                         </div>
-                        <button type="submit" class="start">START</button>
+                        <div>
+                        <button type="submit" class="start">save</button>
+                        <button class="reset" type="reset">cancel</button>
+                    </div>
                     </div>
                 </form>
             </div>
         </div>
     </body>
-
-<form action="{% url 'my_tests:register' user_id %}" method="POST">
 
 
 

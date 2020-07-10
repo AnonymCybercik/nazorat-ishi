@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}JVXTV test sistemasi{% endblock %}
 
@@ -16,6 +17,7 @@
 
 <h1>testlar<br>{{all_t}}</h1>
 <a href="{% url 'my_tests:search' user_id %}"><h1>o`quvchilar<br>{{all_s}}</h1></a>
+<a href="{% url 'my_tests:edit_admin' user_id %}"><h1>adminlar<br>{{all_a}}</h1></a>
 
 
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}tahrirlash{% endblock %}
+
+{% block content %}
+<!-- CSS uchin lik -->
+<link rel="stylesheet" type="text/css" href="{%  static 'css\style.css' %}">
+
+<section class="login-page">
+    <form action="{% url 'my_tests:edit' user_id %}" method="POST">
+        {% csrf_token %}
+
+         <div class="box">
+                <div class="form-head">
+                      <h2>adminni tahrirlash</h2>
+                </div>
+                <div class="form-body">
+                    <input name="username" type="text" placeholder="username" autocomplete="off"><br>
+                    <input name="password" type="password" placeholder="password"><br>
+                    <input name="validator" type="password" placeholder="re-enter password"><br>
+                    <input type="checkbox" name="add_test" value="True"><br>
+                    <input type="checkbox" name="add_student" value="True">
+                </div>
+                <div class="form-footer">
+                      <button type="submit">saqlash</button>
+                </div>
+         </div>
+    </form>
+</section>
+<form >
+
+</form>
+
+
+
+
+{% endblock %}

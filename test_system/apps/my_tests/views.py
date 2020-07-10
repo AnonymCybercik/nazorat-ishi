@@ -59,19 +59,28 @@ def admin(request,user_id):
 
     all_students = Student.objects.all()
     all_tests = Test.objects.all()
+    all_admins = Admin.objects.all()
 
     number_t = len(all_tests)
     number_s = len(all_students)
+    number_a = len(all_admins)
 
     context = {
         "user_id":a.id,
         "all_s":number_s,
-        "all_t":number_t
+        "all_t":number_t,
+        "all_a":number_a
 
 
     }
 
     return render(request,"my_tests/admin.html",context)
+def edit_admin(request,user_id):
+    context = {
+
+    }
+
+    return render(request,'my_tests/edit-admin.html',context)
 
 def user_login(request):
 

@@ -15,13 +15,14 @@ a{
     font-size: 18px;
     border: 1px solid white;
     border-radius: 5px;
+    opacity: 1;
 }
 .top{
     background-color: black;
     position: relative;
     line-height: 40px;
     padding: 10px;
-    opacity: 0.7;
+    opacity: 0.9;
     margin: 0;
 
 }
@@ -33,30 +34,31 @@ a{
     left: 32%;
     translate: (-50%,-50%);
     border-radius: 5px;
-    border-color: rgb(12, 206, 12);
     background: #ffffff;
     overflow-x: hidden;
-    overflow-y: auto;
-    border: 2px solid  rgb(12, 206, 12) ;
+    overflow-y: scroll;
     box-shadow: 
-    -3px -2px 15px 0px #000, 3px 2px 15px 0px #000;
+    0px 0px 12px -5px #000;
     background: #ffffff;
     padding: 30px;
     margin: 0;
+    scroll-snap-type: unset;
 }
 .container::after{
-    border: 1px solid rgb(11, 173, 11);
     top:3px;
     left: 3px;
     right: 3px;
     bottom: -320px;
     position: absolute;
+    
 }
 .inputs{
 display: flex;
 flex-direction: column;
 margin-right: 15px;
 margin-left: 15px;
+margin:10px 0;
+
 }
 input{
     height: 30px;
@@ -65,7 +67,7 @@ input{
     padding: 7px;
     margin-top: 5px;
     font-size: 16px;
-    border-color:  rgb(12, 206, 12);
+    border-color: #3287a8;
     outline: none;
     background:#ffffff;
 }
@@ -76,36 +78,38 @@ select{
     color: gray;
     font-size: 16px;
     margin-top: 5px;
-    border-color:  rgb(12, 206, 12) ;
+    border-color:  #3287a8 ;
+    margin:10px 0;
+
 }
-.select1{
-    width: 80%;
-}
-.select2{
-    width: 60%;
-}
+
+
 .select3{
-    width: 95%;
+    width: 92%;
 }
 button{
-    width: 200px;
-    height: 55px;
+    width: 100px;
+    height: 45px;
     margin-top: 20px;
-    background-color:  #01e701;
-    border: 1px solid  rgb(10, 187, 10);
+    background-color:  #3287a8;
+    border: 1px solid  #3287a8;
     color: #ffffff;
     font-size: medium;
     font-family: sans-serif;
-    display: inline-block;
-    margin-left: 75px;
+    display: inline;
+    margin-left: 10px;
     border-radius: 10px;
     cursor: pointer;
 }
-
+.reset{
+    background: none;
+    border:1px solid black;
+    color: black;
+}
 label{
     display: flex;
     flex-direction: column;
-    color: gray;
+    color:black;
 }
 .form_head{
     text-align: center;
@@ -115,8 +119,9 @@ margin-top: 10px;
 }
 h1{
     border-bottom: 1.5px solid;
-    border-color:  rgb(12, 206, 12) ;
-    color:  rgb(12, 206, 12);
+    width: 92%;
+    border-color:  #3287a8 ;
+    color:  #3287a8;
 }
 p{
     color: gray;
@@ -135,10 +140,10 @@ input{
 }
 .select1{
     display: inline-block;
-    width: 165px;
+    width: 45%;
 }
 .select2{
     display: inline-block;
-    width: 165px;
+    width: 46%;
 }
 
