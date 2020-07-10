@@ -22,12 +22,18 @@ def register(request,user_id):
 
     students = Student.objects.all()
 
+    data = username,first_name,last_name,school,grade,password,validator,viloyat
+
+
     usernames = []    
 
     for student in students:
         usernames.append(student.username)
     
     admin = Admin.objects.get(id = user_id)
+
+    s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@#$%&*_-'
+    sr = ''.join(random.sample(s, len(s)))
 
     full = ''
 
@@ -46,7 +52,9 @@ def register(request,user_id):
 
         "user_id":user_id,
         "error":full,
-        "add_student":admin.add_student
+        "add_student":admin.add_student,
+        "recpas":sr[:10]
+
 
 
     }
@@ -263,17 +271,3 @@ def search(request,user_id):
     }
 
     return render(request,"my_tests/students.html",context)
-
-def generate(request,user_id):
-
-    s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@#$%&*_-'
-    sr = ''.join(random.sample(s, len(s)))
-
-    context = {
-
-        "user_id":user_id,
-        "recpas":sr[:10]
-
-    }
-
-    return render(request,'my_tests/register.html',context)

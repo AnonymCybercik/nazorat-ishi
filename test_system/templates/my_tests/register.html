@@ -90,8 +90,8 @@
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
                             <label for="password">Parolni kiriting</label>
-                            <input type="password" name="text" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
-                            <input type="validator" name="text" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
+                            <input type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
+                            <input type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
                             {% if error == 'inpass' %}
                                 <p style="color: red;">parollar bir xil emas</p>
                             {% endif %}
