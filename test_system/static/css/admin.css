@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    position: relative;
+    text-align: left;
+    height: 100vh;
+    background-color: blue;
+    width: 15%;
+}
+.container.label{
+    padding: 20px;
+}
+ul{
+    position: absolute;
+    top: -20%;
+    list-style: none;
+}
+#check{
+    display: none;
+}
+ul.ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+ul li{
+    padding: 25px;
+    background-color: blue;
+    font-size: 18px;
+}
+
+.labl{
+    font-size: 18px;
+    padding:0 25px;
+    height: 10%;
+    transform: translateY(30%);
+    background-color: blue;
+    color: wheat;
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

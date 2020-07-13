@@ -30,7 +30,11 @@ def register(request,user_id):
     for student in students:
         usernames.append(student.username)
     
-    admin = Admin.objects.get(id = user_id)
+    try:
+        admin = Admin.objects.get(id = user_id)
+        admin = admin.add_student
+    except:
+        admin = False
 
     s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@#$%&*_-'
     sr = ''.join(random.sample(s, len(s)))
@@ -52,7 +56,7 @@ def register(request,user_id):
 
         "user_id":user_id,
         "error":full,
-        "add_student":admin.add_student,
+        "add_student":admin,
         "recpas":sr[:10]
 
 
@@ -60,6 +64,25 @@ def register(request,user_id):
     }
 
     return render(request,'my_tests/register.html',context)
+
+def tests(request,user_id):
+    a = User.objects.get(id = user_id)
+    context = {
+        "admin":a,
+        'user_id':user_id,
+    }
+    return render(request,'my_tests/alls.html',context)
+
+def admins(request,user_id):
+    a = User.objects.get(id = user_id)
+    context = {
+        "admin":a,
+        'user_id':user_id,
+    }
+    return render(request,'my_tests/alls.html',context)
+
+
+
 
 def admin(request,user_id):
 
@@ -77,9 +100,9 @@ def admin(request,user_id):
         "user_id":a.id,
         "all_s":number_s,
         "all_t":number_t,
-        "all_a":number_a
-
-
+        "all_a":number_a,
+        "all_admins":all_admins,
+        "admin":a
     }
 
     return render(request,"my_tests/admin.html",context)
@@ -187,8 +210,11 @@ def choice(request,user_id):
 
 def add_test(request,user_id,test_id):
     
-
-    admin = Admin.objects.get(id = user_id)
+    try:
+        admin = Admin.objects.get(id = user_id)
+        admin = admin.add_test
+    except:
+        admin = False
 
     A = request.POST.get('A')
     B = request.POST.get('B')
@@ -207,7 +233,7 @@ def add_test(request,user_id,test_id):
 
         "user_id":user_id,
         "test_id":test_id,
-        "add_tests":admin.add_test,
+        "add_tests":admin,
 
     }
 
@@ -260,7 +286,6 @@ def search(request,user_id):
     grade = request.POST.get('grade')
     school_data = request.POST.get('school')
     viloyat = request.POST.get('viloyat')
-    print(school_data)
     students = Student.objects.filter(grade = grade,school = school_data,viloyat = viloyat)
 
     context = {

@@ -6,16 +6,20 @@
 {% block title %}Test qo`shish{% endblock %}
 
 {% block content %}
-{{add_tests}}
-{% if not add_tests %}
 
 <!-- CSS uchin lik -->
 <link rel="stylesheet" href="{% static '' %}">
 
-
-<a href="{% url 'my_tests:admin' user_id %}">home</a>
-<a href="{% url 'my_tests:register' user_id %}">o`quvchi qo`shish</a>
-
+{% if not add_tests %}
+        <div class="top">  
+                <a href="{% url 'my_tests:admin' user_id %}">home</a>
+                <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
+        </div>
+{% else %}
+        <div class="top">  
+            <a href="">home</a>
+            <a href="">test qo`shish</a>
+    </div>
 {% endif %}
 
 <form action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
@@ -36,7 +40,5 @@
     </select>
     <button type="submit">saqlash</button>
 </form>
-
-
 
 {% endblock %}
