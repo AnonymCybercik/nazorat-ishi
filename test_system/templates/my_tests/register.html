@@ -27,10 +27,9 @@
     </head>
     <body style="background: #eeeeee;">
 
-        {% if add_student %}
 			<!-- <ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger"> -->
-        {% else %}
+
 		<div class="container">
 			<ul style="border-bottom: 1px solid #53707c; box-shadow:0px 0px 15px 1px #4e788a;" id="gn-menu" class="gn-menu-main">
 				<li  class="gn-trigger">
@@ -40,13 +39,12 @@
 							<ul class="gn-menu">
 								
 								<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home" style="padding:18px; font-size: 28px;"></i>Home</a></li>
-								<li><a href="{% url 'my_tests:admins' user_id %}"><i class="fa fa-user" style="padding:20px; font-size: 28px;"></i>Adminlar</a></li>
 								<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users" style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
 								<li><a href="{% url 'my_tests:tests' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
 								<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus" style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
 								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-plus-circle" style="padding:18px; font-size: 28px;"></i>Test qo`shish</a></li>
-								<li><a href="{% url 'my_tests:add_admin' user_id %}"><i class="fa fa-star-o" style="padding:18px; font-size: 28px;"></i>Admin Qo`shish</a></li>
 								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out" style="padding:18px; font-size: 28px;"></i>Logout</a></li>
+								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle" style="padding:18px; font-size: 28px;"></i>FAQ</a></li>
 							</ul>
 						</div><!-- /gn-scroller -->
 					</nav>
@@ -58,8 +56,7 @@
 		<script src="{% static 'js/gnmenu.js' %}"></script>
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
-		</script>>
-        {% endif %}
+		</script>
         
         <div class="containerw">
             <div class="form">

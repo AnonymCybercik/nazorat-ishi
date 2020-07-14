@@ -10,12 +10,6 @@ class Student(models.Model):
     last_name = models.CharField(max_length=20,null=True)
     password = models.CharField(max_length=20,null=True)
 
-class Admin(models.Model):
-    username = models.CharField(max_length=20,null=True)
-    password = models.CharField(max_length=20,null=True)
-    add_test = models.BooleanField(default = True,null = True)
-    add_student = models.BooleanField(default=True,null = True)
-
 class Sinflarfanlar(models.Model):
     sinf = models.CharField(max_length = 2,choices=[
         ('9','9'),

@@ -6,7 +6,7 @@ import random
 from django.urls import reverse
 
 from django.contrib.auth import authenticate,logout,login
-from my_tests.models import Student,Sinflarfanlar,Test,Admin
+from my_tests.models import Student,Sinflarfanlar,Test
 
 def register(request,user_id):
 
@@ -29,12 +29,7 @@ def register(request,user_id):
 
     for student in students:
         usernames.append(student.username)
-    
-    try:
-        admin = Admin.objects.get(id = user_id)
-        admin = admin.add_student
-    except:
-        admin = False
+
 
     s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@#$%&*_-'
     sr = ''.join(random.sample(s, len(s)))
@@ -56,7 +51,6 @@ def register(request,user_id):
 
         "user_id":user_id,
         "error":full,
-        "add_student":admin,
         "recpas":sr[:10]
 
 
@@ -73,14 +67,6 @@ def tests(request,user_id):
     }
     return render(request,'my_tests/alls.html',context)
 
-def admins(request,user_id):
-    a = User.objects.get(id = user_id)
-    context = {
-        "admin":a,
-        'user_id':user_id,
-    }
-    return render(request,'my_tests/alls.html',context)
-
 
 
 
@@ -90,18 +76,14 @@ def admin(request,user_id):
 
     all_students = Student.objects.all()
     all_tests = Test.objects.all()
-    all_admins = Admin.objects.all()
 
     number_t = len(all_tests)
     number_s = len(all_students)
-    number_a = len(all_admins)
 
     context = {
         "user_id":a.id,
         "all_s":number_s,
         "all_t":number_t,
-        "all_a":number_a,
-        "all_admins":all_admins,
         "admin":a
     }
 
@@ -119,7 +101,6 @@ def user_login(request):
     password = request.POST.get('password')
     user = authenticate(username=username, password=password)
     a = Student.objects.all()
-    b = Admin.objects.all()
 
 
     if user:
@@ -129,17 +110,12 @@ def user_login(request):
             if i.username == username:
                 if i.password == password:
                     return HttpResponseRedirect(reverse("my_tests:student_choice",args=(i.id,)))
-        for i in b:
+        for i in a:
             if i.username == username:
                 if i.password == password:
                     if i.add_test == True:
                         return HttpResponseRedirect(reverse("my_tests:choice",args=(i.id,)))
-        for i in b:
-            if i.username == username:
-                if i.password == password:
-                    if i.add_student == True:
-                        return HttpResponseRedirect(reverse("my_tests:register",args=(i.id,)))
-
+        
     
     context = {
 
@@ -148,26 +124,6 @@ def user_login(request):
 
     return render(request,'my_tests/login.html',context)
 
-def add_admin(request,user_id):
-
-    data_test = request.POST.get('add_test')
-    data_student = request.POST.get('add_student')
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    validator = request.POST.get('validator')
-
-    if username:
-        if data_test or data_student:
-            if password == validator:
-                a = Admin(username = username,password = password,add_test = data_test,add_student = data_student)
-                a.save()
-
-
-    context = {
-        "user_id":user_id
-    }
-
-    return render(request,'my_tests/add admin.html',context)
 
 
 def home(request):
@@ -210,11 +166,7 @@ def choice(request,user_id):
 
 def add_test(request,user_id,test_id):
     
-    try:
-        admin = Admin.objects.get(id = user_id)
-        admin = admin.add_test
-    except:
-        admin = False
+    
 
     A = request.POST.get('A')
     B = request.POST.get('B')
@@ -233,7 +185,6 @@ def add_test(request,user_id,test_id):
 
         "user_id":user_id,
         "test_id":test_id,
-        "add_tests":admin,
 
     }
 
