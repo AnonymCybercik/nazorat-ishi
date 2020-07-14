@@ -8,8 +8,8 @@ body{
 
 .containerw{
     position: absolute;
-    width: 1020px;
-    height: 590px;
+    width: 74.5%;
+    height: 90%;
     top: 9.17%;
     left: 25.3%;
     translate: (-50%,-50%);
@@ -62,7 +62,7 @@ select{
 
 
 .select3{
-    width: 92%;
+    width: 90%;
 }
 button{
     width: 100px;
@@ -98,7 +98,7 @@ margin-top: 10px;
 }
 h2{
     border-bottom: 1.5px solid;
-    width: 92%;
+    width: 90%;
     border-color:  #3287a8 ;
     color:  #3287a8;
 }
@@ -121,6 +121,6 @@ input{
 }
 .select2{
     display: inline-block;
-    width: 46%;
+    width: 44.5%;
 }
 
