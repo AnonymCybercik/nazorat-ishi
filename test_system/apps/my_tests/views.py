@@ -233,17 +233,21 @@ def test(request,student_id,test_id):
     return render(request,'my_tests/test.html',context)
 
 def search(request,user_id):
+    
 
     grade = request.POST.get('grade')
     school_data = request.POST.get('school')
     viloyat = request.POST.get('viloyat')
-    students = Student.objects.filter(grade = grade,school = school_data,viloyat = viloyat)
-
+    students = Student.objects.filter(grade = grade,school = school_data,viloyat = viloyat).order_by('last_name')
+   
+        
     context = {
 
         "students":students,
+        "grade":grade,
         "user_id":user_id,
-
+        "school_data":school_data,
+        "viloyat":viloyat,
     }
 
     return render(request,"my_tests/students.html",context)
