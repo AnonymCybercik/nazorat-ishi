@@ -15,6 +15,7 @@ def register(request,user_id):
     last_name = request.POST.get('last_name')
     school = request.POST.get('school')
     grade = request.POST.get('grade')
+    grade2 = request.POST.get('grade2')
     password = request.POST.get('password')
     validator = request.POST.get('validator')
     viloyat = request.POST.get('viloyat')
@@ -41,7 +42,7 @@ def register(request,user_id):
             full = 'inusername'
         else:
             if password == validator:
-                a = Student(first_name = first_name,last_name = last_name ,username = username , password = password,school=school,grade=grade,viloyat = viloyat)
+                a = Student(first_name = first_name,last_name = last_name ,username = username , password = password,school=school,grade=grade,grade2=grade2,viloyat = viloyat)
                 a.save()
                 return HttpResponseRedirect(reverse("my_tests:register",args=(user_id,)))
             else:
@@ -88,12 +89,75 @@ def admin(request,user_id):
     }
 
     return render(request,"my_tests/admin.html",context)
-def edit(request,user_id):
+def edit(request,user_id,stud_id):
+
+    a = Student.objects.get(id = stud_id)
     context = {
-        "user_id":user_id
+        "user_id":   user_id,
+        "stud_id":   stud_id,
+        "username":  a.username,
+        "first_name":a.first_name,
+        "last_name": a.last_name,
+        "school":    a.school,
+        "grade":     a.grade,
+        "grade2":    a.grade2,
+        "password":  a.password,
+        "viloyat":   a.viloyat,
     }
+    
+    
+    
 
     return render(request,'my_tests/edit-admin.html',context)
+def delete(request,user_id,stud_id):
+    a = Student.objects.get(id = stud_id)
+    a.delete()
+    return HttpsResponseRedirect(reverse("my_tests:admin",args = (user_id,)))
+def save(request,user_id,stud_id):
+    username = request.POST.get('username')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    school = request.POST.get('school')
+    grade = request.POST.get('grade')
+    grade2 = request.POST.get('grade2')
+    password = request.POST.get('password')
+    viloyat = request.POST.get('viloyat')
+    validator = request.POST.get('validator')
+
+    n = []
+
+    a = Student.objects.get(id = stud_id)
+    alls = Student.objects.all()
+    for d in alls:
+        n.append(d)
+
+    if not(username in alls):
+        a.username =   str(username)
+
+
+    if password != a.password and (password == validator):a.password = str(password);
+
+    a.first_name = str(first_name)
+    a.last_name =  str(last_name)
+    a.school  =    str(school)
+    a.grade  =     str(grade)
+    a.grade2  =    str(grade2)
+    a.viloyat  =   str(viloyat)
+    a.save()
+
+    return HttpResponseRedirect(reverse("my_tests:edit",args=(user_id,stud_id,)))
+def alls(request,user_id,test_id):
+
+    a = Sinflarfanlar.objects.get(id = test_id)
+
+    tests = a.test_set.order_by("-id")
+
+    context = {
+        "user_id":user_id,
+        "tests":tests,
+    }
+
+    return render(request,"my_tests/alls.html",context)
 
 def user_login(request):
 
@@ -146,20 +210,16 @@ def user_logout(request,user_id):
 
 def choice(request,user_id):
 
-    sinf = request.POST.get('sinf')
-    fan = request.POST.get('fanlar')
-     
+    verificate9 =Sinflarfanlar.objects.all().filter(sinf='9')
+    verificate10 =Sinflarfanlar.objects.all().filter(sinf='10')
+    verificate11 =Sinflarfanlar.objects.all().filter(sinf='11')
 
-    verificate =Sinflarfanlar.objects.all()
-
-    for i in verificate:
-        if i.sinf == sinf and i.fanlar == fan:
-            a = Sinflarfanlar.objects.get(id = i.id)
-            print('ready1')
-            return HttpResponseRedirect(reverse('my_tests:add_test',args = (user_id,a.id,)))
            
     context = {
-        'user_id':user_id
+        'user_id':user_id,
+        "verificate9":verificate9,
+        "verificate10":verificate10,
+        "verificate11":verificate11,
     }
     
     return render(request,'my_tests/choice.html',context)
@@ -236,9 +296,10 @@ def search(request,user_id):
     
 
     grade = request.POST.get('grade')
+    grade2 = request.POST.get('grade2')
     school_data = request.POST.get('school')
     viloyat = request.POST.get('viloyat')
-    students = Student.objects.filter(grade = grade,school = school_data,viloyat = viloyat).order_by('last_name')
+    students = Student.objects.filter(grade = grade,grade2 = grade2,school = school_data,viloyat = viloyat).order_by('last_name')
    
         
     context = {

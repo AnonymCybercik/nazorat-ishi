@@ -37,9 +37,8 @@
 								
 								<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home" style="padding:18px; font-size: 28px;"></i>Home</a></li>
 								<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users" style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
-								<li><a href="{% url 'my_tests:tests' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
+								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
 								<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus" style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
-								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-plus-circle" style="padding:18px; font-size: 28px;"></i>Test qo`shish</a></li>
 								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out" style="padding:18px; font-size: 28px;"></i>Logout</a></li>
                         </li>
                     </ul>
@@ -66,7 +65,7 @@
         <option value="10">10-Sinf</option>
         <option value="11">11-Sinf</option>
     </select>
-    <select name="grade" >
+    <select name="grade2" >
         <option value="A">A Sinf</option>
         <option value="B">B Sinf</option>
         <option value="V">V Sinf</option>
@@ -103,7 +102,7 @@
 {% if students %}
 {% for num in students %}
     
-    <a href="#"><li class="student"> {{ num.last_name }} {{ num.first_name }}</li></a>
+    <li class="student"> {{ num.last_name }} {{ num.first_name }} <a href="{% url 'my_tests:edit' user_id num.id %}">edit</a><a href="{% url 'my_tests:delete' user_id num.id %}">delete</a></li>
     
 {% endfor %}
 {% else %}

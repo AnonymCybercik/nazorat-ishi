@@ -2,37 +2,131 @@
 
 {% load static %}
 
-{% block title %}tahrirlash{% endblock %}
+{% block title %}EDIT{% endblock %}
 
 {% block content %}
-<!-- CSS uchin lik -->
-<link rel="stylesheet" type="text/css" href="{%  static 'css\style.css' %}">
 
-<section class="login-page">
-    <form action="{% url 'my_tests:edit' user_id %}" method="POST">
-        {% csrf_token %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-         <div class="box">
-                <div class="form-head">
-                      <h2>adminni tahrirlash</h2>
-                </div>
-                <div class="form-body">
-                    <input name="username" type="text" placeholder="username" autocomplete="off"><br>
-                    <input name="password" type="password" placeholder="password"><br>
-                    <input name="validator" type="password" placeholder="re-enter password"><br>
-                    <input type="checkbox" name="add_test" value="True"><br>
-                    <input type="checkbox" name="add_student" value="True">
-                </div>
-                <div class="form-footer">
-                      <button type="submit">saqlash</button>
-                </div>
-         </div>
-    </form>
-</section>
-<form >
 
-</form>
+        <!-- CSS uchin lik -->
+        <link rel="stylesheet" href="{% static 'css\register.css' %}">
+        <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+        <script src="{% static 'js/modernizr.custom.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
+    <body style="background: #eeeeee;">
+
+			<!-- <ul id="gn-menu" class="gn-menu-main">
+				<li class="gn-trigger"> -->
+
+		<div class="container">
+			<ul style="border-bottom: 1px solid #53707c; box-shadow:0px 0px 15px 1px #4e788a;" id="gn-menu" class="gn-menu-main">
+				<li  class="gn-trigger">
+					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+					<nav class="gn-menu-wrapper">
+                        <div class="gn-scroller">
+							<ul class="gn-menu">
+								
+								<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home" style="padding:18px; font-size: 28px;"></i>Home</a></li>
+								<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users" style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
+								<li><a href="{% url 'my_tests:tests' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
+								<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus" style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
+								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-plus-circle" style="padding:18px; font-size: 28px;"></i>Test qo`shish</a></li>
+								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out" style="padding:18px; font-size: 28px;"></i>Logout</a></li>
+								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle" style="padding:18px; font-size: 28px;"></i>FAQ</a></li>
+							</ul>
+						</div><!-- /gn-scroller -->
+					</nav>
+				</li>
+				<li><a class="codrops-icon codrops-icon-drop" href=""><span>{{ admin.username }}</span></a></li>
+			</ul>
+		</div><!-- /container -->
+		<script src="{% static 'js/classie.js' %}"></script>
+		<script src="{% static 'js/gnmenu.js' %}"></script>
+		<script>
+			new gnMenu( document.getElementById( 'gn-menu' ) );
+		</script>
+        
+        <div class="containerw">
+            <div class="form">
+                <form action="{% url 'my_tests:save' user_id  stud_id %}" method="POST">
+                    <div class="inputs">
+                        <div class="form_head">
+                            <h2>O`quvchi qo`shish</h2>
+                        </div>
+                        <div class="form_body">
+                            {% csrf_token %}
+                            {% if error == 'all' %}
+                                <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
+                            {% endif %}
+                            <label class="label" for="user_name">Ims && Familyani kiriting</label>
+                            <input value="{{ first_name }}" class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
+                            <input value="{{ last_name }}" class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
+                        </div>
+                        <div class="form_body2">
+                        
+                            <label class="label" for="grade">Sinfni kiriting</label>
+                        <select name="grade" id="" class="select1">
+                            <option value="{{ grade }}">{{ grade }}</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                        </select>
+                        <select name="grade2" id="" class="select2">
+                            <option value="{{ grade2 }}">{{ grade2 }}</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="V">V</option>
+                            <option value="G">G</option>
+                            <option value="D">D</option>
+                        </select>
+                        <label class="label" for="viloyat">Viloyatni kiriting</label>
+                        <select name="viloyat" id="" class="select3">
+                            <option value="{{viloyat}}">{{viloyat}}</option>
+                            <option value="jizzax shaxar">jizzax shaxar</option>
+                            <option value="Arnasoy">Arnasoy tumani</option>
+                            <option value="Baxmal">Baxmal tumani</option>
+                            <option value="Do'stlik">Do'stlik tumani</option>
+                            <option value="Sharof Rashidov">Sharof Rashidov tumani</option>
+                            <option value="Zarbdor">Zarbdor tumani</option>
+                            <option value="Zafarobod">Zafarobod tumani</option>
+                            <option value="Zomin">Zomin tumani</option>
+                            <option value="Mirzacho'l">Mirzacho'l tumani</option>
+                            <option value="Paxtakor">Paxtakor tumani</option>
+                            <option value="Yangiobod">Yangiobod tumani</option>
+                            <option value="Forish">Forish tumani</option>
+                            <option value="G'allaorol">G'allaorol tumani</option>
+                        </select>
+                        </div>
+                        <div class="form_footer">
+                            <label class="label" for="school">Maktab raqamini kiriting</label>
+                            <input class="input" value="{{ school }}" type="text" placeholder="School" name="school" autocomplete="off">
+                            <label class="label" for="username">Usernameni kiriting</label> 
+                            <input class="input" value="{{ username }}" type="text" name="username" placeholder="Username">
+                            {% if error == 'inusername' %}
+                                <p style="color: red;">bu username avval qo`llangan</p>
+                            {% endif %}
+                            <label class="label" for="password">Parolni kiriting</label>
+                            <input class="input" value="{{ password }}" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
+                            <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
+                            {% if error == 'inpass' %}
+                                <p style="color: red;">parollar bir xil emas</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                        <button type="submit" class="start">Saqlash</button>
+                        <button class="reset" type="reset">Bekor qilish</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 
 
 

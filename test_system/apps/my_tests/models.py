@@ -5,6 +5,7 @@ class Student(models.Model):
     viloyat = models.CharField(max_length=20,null=True)
     school = models.CharField(max_length=20,null=True)
     grade = models.CharField(max_length=20,null=True)
+    grade2 = models.CharField(max_length=20,null=True)
     username = models.CharField(max_length=20,null=True)
     first_name = models.CharField(max_length=20,null=True)
     last_name = models.CharField(max_length=20,null=True)
