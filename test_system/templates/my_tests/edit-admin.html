@@ -16,6 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
         <script src="{% static 'js/modernizr.custom.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
@@ -57,21 +58,21 @@
                 <form action="{% url 'my_tests:save' user_id  stud_id %}" method="POST">
                     <div class="inputs">
                         <div class="form_head">
-                            <h2>O`quvchi qo`shish</h2>
+                            <h2>O`quvchi Tahrirlash</h2>
                         </div>
                         <div class="form_body">
                             {% csrf_token %}
                             {% if error == 'all' %}
                                 <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
                             {% endif %}
-                            <label class="label" for="user_name">Ims && Familyani kiriting</label>
+                            <label class="label1" for="user_name">Ism Familyani kiriting</label>
                             <input value="{{ first_name }}" class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
                             <input value="{{ last_name }}" class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
                         
-                            <label class="label" for="grade">Sinfni kiriting</label>
-                        <select name="grade" id="" class="select1">
+                        <label class="label1" for="grade">Sinfni kiriting</label>
+                        <select name="grade" id="" class="select1 order-1">
                             <option value="{{ grade }}">{{ grade }}</option>
                             <option value="9">9</option>
                             <option value="10">10</option>
@@ -85,7 +86,7 @@
                             <option value="G">G</option>
                             <option value="D">D</option>
                         </select>
-                        <label class="label" for="viloyat">Viloyatni kiriting</label>
+                        <label class="label1" for="viloyat">Viloyatni kiriting</label>
                         <select name="viloyat" id="" class="select3">
                             <option value="{{viloyat}}">{{viloyat}}</option>
                             <option value="jizzax shaxar">jizzax shaxar</option>
@@ -111,7 +112,7 @@
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
-                            <label class="label" for="password">Parolni kiriting</label>
+                            <label class="label1" for="password">Parolni kiriting</label>
                             <input class="input" value="{{ password }}" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
                             <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
                             {% if error == 'inpass' %}
@@ -119,8 +120,8 @@
                             {% endif %}
                         </div>
                         <div>
-                        <button type="submit" class="start">Saqlash</button>
-                        <button class="reset" type="reset">Bekor qilish</button>
+                        <button type="submit" class="btn mt-3 btn-primary" >Saqlash</button>
+                        <button class="btn mt-3 ml-2 btn-outline-secondary" style="font-size: 14px;" type="reset">Bekor qilish</button>
                     </div>
                     </div>
                 </form>

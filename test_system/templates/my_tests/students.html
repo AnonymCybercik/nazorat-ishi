@@ -18,6 +18,7 @@
 		<meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
         <link rel="stylesheet" href="{% static 'css/students.css' %}">
+        <link rel="stylesheet" href="{% static 'css/css/bootstrap.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
@@ -92,7 +93,7 @@
         <option value="G'allaorol">G'allaorol</option>
     </select>
     
-    <button type='submit'>search</button>
+    <button type='submit' class="btn btn-outline-primary">search</button>
     
     </form>
     </div>
@@ -100,11 +101,22 @@
 
 <div class="studs">
 {% if students %}
+<table class="table  table-bordered mt-1">
+ <tr>
+  <thead class="table-light">
+      <th>Ism</th>
+      <th>Familya</th>
+      <th></th>
+  </thead>
 {% for num in students %}
-    
-    <li class="student"> {{ num.last_name }} {{ num.first_name }} <a href="{% url 'my_tests:edit' user_id num.id %}">edit</a><a href="{% url 'my_tests:delete' user_id num.id %}">delete</a></li>
-    
+
+<tbody class="text-secondary">
+    <th > {{ num.first_name }}</th> <th>{{ num.last_name }} </th><th><a href="{% url 'my_tests:delete' user_id num.id %}" class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a href="{% url 'my_tests:edit' user_id num.id %}" class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>  
+</tdoby>
 {% endfor %}
+
+</tr>
+</table>
 {% else %}
 
     OOPS

@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{% static 'css\register.css' %}">
         <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
         <script src="{% static 'js/modernizr.custom.js' %}"></script>
@@ -69,13 +70,13 @@
                             {% if error == 'all' %}
                                 <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
                             {% endif %}
-                            <label class="label" for="user_name">Ims && Familyani kiriting</label>
+                            <label class="label1" for="user_name">Ims && Familyani kiriting</label>
                             <input class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
                             <input class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
                         
-                            <label class="label" for="grade">Sinfni kiriting</label>
+                            <label class="label1" for="grade">Sinfni kiriting</label>
                         <select name="grade" id="" class="select1">
                             <option value="9">9</option>
                             <option value="10">10</option>
@@ -88,7 +89,7 @@
                             <option value="G">G</option>
                             <option value="D">D</option>
                         </select>
-                        <label class="label" for="viloyat">Viloyatni kiriting</label>
+                        <label class="label1" for="viloyat">Viloyatni kiriting</label>
                         <select name="viloyat" id="" class="select3">
                             <option value="jizzax shaxar">jizzax shaxar</option>
                             <option value="Arnasoy">Arnasoy tumani</option>
@@ -106,14 +107,14 @@
                         </select>
                         </div>
                         <div class="form_footer">
-                            <label class="label" for="school">Maktab raqamini kiriting</label>
+                            <label class="label1" for="school">Maktab raqamini kiriting</label>
                             <input class="input" type="text" placeholder="School" name="school" autocomplete="off">
-                            <label class="label" for="username">Usernameni kiriting</label> 
+                            <label class="label1" for="username">Usernameni kiriting</label> 
                             <input class="input" type="text" name="username" placeholder="Username">
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
-                            <label class="label" for="password">Parolni kiriting</label>
+                            <label class="label1" for="password">Parolni kiriting</label>
                             <input class="input" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
                             <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
                             {% if error == 'inpass' %}
@@ -121,8 +122,8 @@
                             {% endif %}
                         </div>
                         <div>
-                        <button type="submit" class="start">Saqlash</button>
-                        <button class="reset" type="reset">Bekor qilish</button>
+                            <button type="submit" class="btn mt-3 btn-primary" >Saqlash</button>
+                            <button class="btn mt-3 ml-2 btn-outline-secondary" style="font-size: 14px;" type="reset">Bekor qilish</button>
                     </div>
                     </div>
                 </form>
