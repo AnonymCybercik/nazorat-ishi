@@ -80,7 +80,6 @@ transition:box-shadow .5s ease;
 .login-page .box .form-footer button:hover{
 	box-shadow: 0px 0px 10px black;
 }
-
-
-
-
+#active{
+	background-color: blue;
+}
