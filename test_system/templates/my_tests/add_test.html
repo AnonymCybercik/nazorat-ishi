@@ -7,32 +7,76 @@
 
 {% block content %}
 
-<!-- CSS uchin lik -->
-<link rel="stylesheet" href="{% static '' %}">
-
-        <div class="top">  
-                <a href="{% url 'my_tests:admin' user_id %}">home</a>
-                <a href="{% url 'my_tests:choice' user_id %}">test qo`shish</a>
-        </div>
+<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<form action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
+        <!-- CSS uchin lik -->
+        <link rel="stylesheet" href="{% static 'css\add-test.css' %}">
+        <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+        <script src="{% static 'js/modernizr.custom.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+
+    <body style="background: #eeeeee;">
+
+			<!-- <ul id="gn-menu" class="gn-menu-main">
+				<li class="gn-trigger"> -->
+
+		<div class="container">
+			<ul style="border-bottom: 1px solid #53707c; box-shadow:0px 0px 15px 1px #4e788a;" id="gn-menu" class="gn-menu-main">
+				<li  class="gn-trigger">
+					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+					<nav class="gn-menu-wrapper">
+                        <div class="gn-scroller">
+							<ul class="gn-menu">
+								
+								<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home" style="padding:18px; font-size: 28px;"></i>Home</a></li>
+								<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users" style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
+								<li><a href="{% url 'my_tests:tests' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
+								<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus" style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
+								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-plus-circle" style="padding:18px; font-size: 28px;"></i>Test qo`shish</a></li>
+								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out" style="padding:18px; font-size: 28px;"></i>Logout</a></li>
+								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle" style="padding:18px; font-size: 28px;"></i>FAQ</a></li>
+							</ul>
+						</div><!-- /gn-scroller -->
+					</nav>
+				</li>
+				<li><a class="codrops-icon codrops-icon-drop" href=""><span>{{ admin.username }}</span></a></li>
+			</ul>
+		</div><!-- /container -->
+		<script src="{% static 'js/classie.js' %}"></script>
+		<script src="{% static 'js/gnmenu.js' %}"></script>
+		<script>
+			new gnMenu( document.getElementById( 'gn-menu' ) );
+		</script>
+        
+<div class="containerw">
+
+<form  action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
 
     {% csrf_token %}
-
-    <textarea name="question" cols="30" rows="10" placeholder="savolni kiriting"></textarea>
-    <br>
-    <input type="text" name ='A'><br>
-    <input type="text" name ='B'><br>
-    <input type="text" name ='C'><br>
-    <input type="text" name ='D'><br>
-    <select name="answer" >
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-    </select>
-    <button type="submit">saqlash</button>
+    <label for="QUESTION">Savolni kiriting</label>
+    <textarea style="outline: none;" id="QUESTION" class="input-group" name="question"  rows="5" ></textarea>
+    <label for="A">A - Variant</label>
+    <input style="outline: none;" id="A" class="input-group" autocomplete="off" type="text" name ='A'>
+    <label for="B">B - Variant</label>
+    <input style="outline: none;" id="B" class="input-group" autocomplete="off" type="text" name ='B'>
+    <label for="C">C - Variant</label>
+    <input style="outline: none;" id="C" class="input-group" autocomplete="off" type="text" name ='C'>
+    <label for="D">D - Variant</label>
+    <input style="outline: none;" id="D" class="input-group" autocomplete="off" type="text" name ='D'>
+    <label for="select">To`g`ri javobni tanlang</label><br>
+    <select style="outline: none; color: #727272;" id="select" class="w-25" name="answer" >
+        <option value="A">A - Variant</option>
+        <option value="B">B - Variant</option>
+        <option value="C">C - Variant</option>
+        <option value="D">D - Variant</option>
+    </select><br>
+    <button type="submit" class="btn mt-3 btn-primary">Saqlash</button>
 </form>
-
+</div>
 {% endblock %}
