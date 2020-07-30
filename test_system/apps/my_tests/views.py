@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,HttpResponseRedirect
+from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User
 
 import random
@@ -89,30 +89,26 @@ def admin(request,user_id):
     }
 
     return render(request,"my_tests/admin.html",context)
-def edit(request,user_id,stud_id):
+def edit_test(request,user_id,test_id):
 
-    a = Student.objects.get(id = stud_id)
+    test = Sinflarfanlar.objects.get(id = test_id)
+    test = test.test_set.order_by("id")
+
     context = {
         "user_id":   user_id,
-        "stud_id":   stud_id,
-        "username":  a.username,
-        "first_name":a.first_name,
-        "last_name": a.last_name,
-        "school":    a.school,
-        "grade":     a.grade,
-        "grade2":    a.grade2,
-        "password":  a.password,
-        "viloyat":   a.viloyat,
+        "test":      test, 
     }
     
     
     
 
-    return render(request,'my_tests/edit-admin.html',context)
+    return render(request,'my_tests/edit-test.html',context)
+
 def delete(request,user_id,stud_id):
     a = Student.objects.get(id = stud_id)
     a.delete()
-    return HttpsResponseRedirect(reverse("my_tests:admin",args = (user_id,)))
+    return redirect("my_tests:admin",args = (user_id,))
+    
 def save(request,user_id,stud_id):
     username = request.POST.get('username')
     first_name = request.POST.get('first_name')
@@ -145,7 +141,7 @@ def save(request,user_id,stud_id):
     a.viloyat  =   str(viloyat)
     a.save()
 
-    return HttpResponseRedirect(reverse("my_tests:edit",args=(user_id,stud_id,)))
+    return redirect("my_tests:edit",args=(user_id,stud_id,))
 def alls(request,user_id,test_id):
 
     a = Sinflarfanlar.objects.get(id = test_id)
@@ -168,17 +164,17 @@ def user_login(request):
 
 
     if user:
-        return HttpResponseRedirect(reverse("my_tests:admin",args=(user.id,)))
+        return redirect(reverse("my_tests:admin",args=(user.id,)))
     elif not(user):
         for i in a:
             if i.username == username:
                 if i.password == password:
-                    return HttpResponseRedirect(reverse("my_tests:student_choice",args=(i.id,)))
+                    return redirect(reverse("my_tests:student_choice",args=(i.id,)))
         for i in a:
             if i.username == username:
                 if i.password == password:
                     if i.add_test == True:
-                        return HttpResponseRedirect(reverse("my_tests:choice",args=(i.id,)))
+                        return redirect(reverse("my_tests:choice",args=(i.id,)))
         
     
     context = {
@@ -206,7 +202,7 @@ def home(request):
 
 def user_logout(request,user_id):
     logout(request)
-    return HttpResponseRedirect(reverse("my_tests:user_login"))
+    return redirect(reverse("my_tests:user_login"))
 
 def choice(request,user_id):
 
@@ -258,7 +254,7 @@ def student_choice(request,student_id):
     if fan and sinf:
         try:
             test = Sinflarfanlar.objects.get(fanlar = fan, sinf = sinf)
-            return HttpResponseRedirect(reverse('my_tests:test',args=(student_id,test.id,)))
+            return redirect(reverse('my_tests:test',args=(student_id,test.id,)))
         except Exception as e:
             print(e)
     context = {
@@ -312,3 +308,26 @@ def search(request,user_id):
     }
 
     return render(request,"my_tests/students.html",context)
+
+def edit(request,user_id,stud_id):
+
+    a = Student.objects.get(id = stud_id)
+
+    context = {
+        "user_id":   user_id,
+        "stud_id":   stud_id,
+        "username":  a.username,
+        "first_name":a.first_name,
+        "last_name": a.last_name,
+        "school":    a.school,
+        "grade":     a.grade,
+        "grade2":    a.grade2,
+        "password":  a.password,
+        "viloyat":   a.viloyat,
+    }
+    
+    
+    
+
+    return render(request,'my_tests/edit-stud.html',context)
+

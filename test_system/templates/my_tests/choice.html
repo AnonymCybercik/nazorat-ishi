@@ -55,7 +55,7 @@
 {% if verificate9 %}
 
     {% for i in verificate9 %}
-    <li class="li"><p class="p9">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:alls' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    <li class="li"><p class="p9">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
 {% endif %}
 <br>
@@ -66,7 +66,7 @@
 {% if verificate10 %}
 
     {% for i in verificate10 %}
-    <li class='li'><p class="p10">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:alls' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    <li class='li'><p class="p10">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
 {% endif %}
 
@@ -77,7 +77,7 @@
 {% if verificate11 %}
 
     {% for i in verificate11 %}
-    <li class="li"><p class="p11">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:alls' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    <li class="li"><p class="p11">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
 {% endif %}
 </div>
