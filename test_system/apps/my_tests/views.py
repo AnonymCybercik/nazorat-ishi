@@ -96,6 +96,7 @@ def edit_test(request,user_id,test_id):
 
     context = {
         "user_id":   user_id,
+        "test_id":   test_id,
         "test":      test, 
     }
     
@@ -331,3 +332,51 @@ def edit(request,user_id,stud_id):
 
     return render(request,'my_tests/edit-stud.html',context)
 
+def edit_test_temp(request,user_id,test_id):
+
+    a = Test.objects.get(id = test_id)
+
+    context = {
+        "user_id":user_id,
+        "test_id":test_id,
+        "question":a.question,
+        "A":a.A,
+        "B":a.B,
+        "C":a.C,
+        "D":a.D,
+        "answer":a.answer,
+    }
+
+    return render(request,'my_tests/add_test_temp.html',context)
+
+def test_save(request,user_id,test_id):
+    
+    question = request.POST.get('question')
+    A = request.POST.get('A')
+    B = request.POST.get('B')
+    C = request.POST.get('C')
+    D = request.POST.get('D')
+    answer = request.POST.get('answer')
+
+    a = Test.objects.get(id = test_id)
+
+    if A and B and C and question and answer:
+        a.question = question
+        a.A = A
+        a.B = B
+        a.C = C
+        a.D = D
+        a.answer = answer
+        a.save()
+
+        return redirect(reverse("my_tests:edit_test_temp",args=(user_id,test_id,)))
+
+def delete_test(request,user_id,test_id,test_del):
+    try:
+        a = Test.objects.get(id = test_del)
+        a.delete()
+    except:
+        return redirect(reverse("my_tests:edit_test",args = (user_id,test_id)))
+
+
+    return redirect(reverse("my_tests:edit_test",args = (user_id,test_id)))

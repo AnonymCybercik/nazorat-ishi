@@ -2,16 +2,17 @@
 
 {% load static %}
 
-{% block title %}EDIT{% endblock %}
+
+{% block title %}Test qo`shish{% endblock %}
 
 {% block content %}
 
-        <meta charset="UTF-8">
+<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\register.css' %}">
+        <link rel="stylesheet" href="{% static 'css\add-test.css' %}">
         <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
@@ -51,30 +52,31 @@
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
-    <div class="containerw">
-        {% if test %}
-        <table class="table table-hover table-bordered">
-            <tr>
-            <thead>
-                <th class="pl-3">Savol</th>
-                <th></th>
-            </thead>
-            {% for i in test %}
-            <tbody >
-                    
-                    <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" class="text-decoration-none text-secondary">{{i.question}}</th></a>
-                    <th><a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
-						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
-						href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
-						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
-            </tbody>
-            {% endfor %}
-        </tr>
-        </table>
-        {% endif %}
-    </div>
-    </body>
+        
+<div class="containerw">
 
+<form  action="{% url 'my_tests:test_save' user_id test_id %}" method="POST">
 
-
+    {% csrf_token %}
+    <label for="QUESTION">Savolni kiriting</label>
+    <textarea value = "" style="outline: none;" id="QUESTION" class="input-group" name="question"  rows="5" >{{question}}</textarea>
+    <label for="A">A - Variant</label>
+    <input value="{{A}}" style="outline: none;" id="A" class="input-group" autocomplete="off" type="text" name ='A'>
+    <label for="B">B - Variant</label>
+    <input value ="{{B}}" style="outline: none;" id="B" class="input-group" autocomplete="off" type="text" name ='B'>
+    <label for="C">C - Variant</label>
+    <input value = "{{C}}" style="outline: none;" id="C" class="input-group" autocomplete="off" type="text" name ='C'>
+    <label for="D">D - Variant</label>
+    <input value = "{{D}}"  style="outline: none;" id="D" class="input-group" autocomplete="off" type="text" name ='D'>
+    <label for="select">To`g`ri javobni tanlang</label><br>
+    <select style="outline: none; color: #727272;" id="select" class="w-25" name="answer" >
+        <option value="{{answer}}">{{answer}} - Variant</option>
+        <option value="A">A - Variant</option>
+        <option value="B">B - Variant</option>
+        <option value="C">C - Variant</option>
+        <option value="D">D - Variant</option>
+    </select><br>
+    <button type="submit" class="btn mt-3 btn-primary">Saqlash</button>
+</form>
+</div>
 {% endblock %}
