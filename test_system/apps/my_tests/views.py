@@ -106,9 +106,13 @@ def edit_test(request,user_id,test_id):
     return render(request,'my_tests/edit-test.html',context)
 
 def delete(request,user_id,stud_id):
-    a = Student.objects.get(id = stud_id)
-    a.delete()
-    return redirect("my_tests:admin",args = (user_id,))
+    try:
+        a = Student.objects.get(id = stud_id)
+        a.delete()
+    except:
+        return redirect(reverse("my_tests:search",args = (user_id,)))
+
+    return redirect(reverse("my_tests:search",args = (user_id,)))
     
 def save(request,user_id,stud_id):
     username = request.POST.get('username')
