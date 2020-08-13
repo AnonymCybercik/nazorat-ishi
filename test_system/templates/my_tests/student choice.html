@@ -6,36 +6,43 @@
 
 {% block content %}
 <!-- CSS uchin lik -->
-<link rel="stylesheet" href="{% static '' %}">
 
-<form action="{% url 'my_tests:student_choice' student_id %}" method="POST">
+<link rel="stylesheet" href="{% static 'css\choice.css' %}">
+<link rel="stylesheet" href="{% static 'css\css\bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
-    {% csrf_token %}
+<div class="justify-content-center">
+    <header>9-SINF</header>
+    <hr>
+    {% if verificate9 %}
+    
+        {% for i in verificate9 %}
+        <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p9">{{ i.fanlar }}</p></li></a>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <hr>
+    <header>10-SINF</header>
+    <hr>
 
-<select name="sinf" >
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-
-</select>
-
-
-<select name="fanlar">
-    <option value="Adabiyot">Adabiyot</option>
-    <option value="Ona tili">Ona tili</option>
-    <option value="Fizika">Fizika</option>
-    <option value="Algebra">Algebra</option>
-    <option value="Rus tili">Rus tili</option>
-    <option value="Kimyo">Kimyo</option>
-    <option value="Biologiya">Biologiya</option>
-    <option value="Informatika">Informatika</option>
-    <option value="Ingliz tili">Ingliz tili</option>
-    <option value="Geometriya">Geometriya</option>
-</select>
-
-<button type="submit">davom etish</button>
-
-</form>
+    {% if verificate10 %}
+    
+        {% for i in verificate10 %}
+        <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p10">{{ i.fanlar }}</p></li></a>
+        {% endfor %}
+    {% endif %}
+    
+    <br>
+    <hr>
+    <header>11-SINF</header>
+    <hr>
+    {% if verificate11 %}
+    
+        {% for i in verificate11 %}
+        <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p11">{{ i.fanlar }}</p></li></a>
+        {% endfor %}
+    {% endif %}
+</div>
 
 
 

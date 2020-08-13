@@ -25,6 +25,7 @@ urlpatterns = [
     path(r'{<int:user_id>}/tests/',views.tests,name = 'tests'),
     path(r'{<int:user_id>}/logout/',views.user_logout,name = 'user_logout'),
     path(r'{<int:student_id>}/choice/',views.student_choice,name = 'student_choice'),
+    path(r'{<int:stud_id>}/profile/',views.user_profile,name = 'user_profile'),
     path(r'{<int:student_id>}/{<int:test_id>}/',views.test,name = 'test'),
     
 ]

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+		<link rel="stylesheet" href="{% static 'css/media.css' %}">
         <script src="{% static 'js/modernizr.custom.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
@@ -53,7 +54,7 @@
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
         
-<div class="containerw">
+<div class="containerw next">
 
 <form  action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
 

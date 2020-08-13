@@ -1,0 +1,33 @@
+@media (max-width: 1125px) {
+    .containerw{
+
+        margin-top: 12%;
+        left:31%;
+
+
+}
+.inline{
+    display: inline-block;
+}
+    .search-box{
+        padding:20px 380px;
+        margin-top: 4%;
+    }
+    .school{
+        width: 80px;
+        font-size: 14px;
+    }
+    select{
+        width: 100px;
+        font-size: 14px;
+    }
+    .viloyat{
+        width: 130px;
+    }
+    .next{
+        height: 90%;
+        width: 69%;
+        margin-top:0.1%;
+
+    }
+  }

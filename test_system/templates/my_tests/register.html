@@ -16,7 +16,7 @@
         <title>Document</title>
 
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\register.css' %}">
+        <link rel="stylesheet" href="{% static 'css\containerw.css' %}">
         <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
@@ -67,12 +67,10 @@
                         </div>
                         <div class="form_body">
                             {% csrf_token %}
-                            {% if error == 'all' %}
-                                <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
-                            {% endif %}
-                            <label class="label1" for="user_name">Ims && Familyani kiriting</label>
-                            <input class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
-                            <input class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
+                            
+                            <label class="label1" for="user_name">Ism va Familyani kiriting</label>
+                            <input class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="Ism">
+                            <input class="input" type="text" name="last_name"  autocomplete="off" placeholder="Familya">
                         </div>
                         <div class="form_body2">
                         
@@ -108,15 +106,15 @@
                         </div>
                         <div class="form_footer">
                             <label class="label1" for="school">Maktab raqamini kiriting</label>
-                            <input class="input" type="text" placeholder="School" name="school" autocomplete="off">
+                            <input class="input" type="text" placeholder="Maktab" name="school" autocomplete="off">
                             <label class="label1" for="username">Usernameni kiriting</label> 
-                            <input class="input" type="text" name="username" placeholder="Username">
+                            <input class="input" type="text" name="username" placeholder="Username" autocomplete="off">
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
                             <label class="label1" for="password">Parolni kiriting</label>
-                            <input class="input" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
-                            <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
+                            <input class="input" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Parol">
+                            <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="Parolni qayta kiriting"> 
                             {% if error == 'inpass' %}
                                 <p style="color: red;">parollar bir xil emas</p>
                             {% endif %}

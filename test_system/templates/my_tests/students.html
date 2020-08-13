@@ -19,6 +19,7 @@
     <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
     <link rel="stylesheet" href="{% static 'css/students.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
     <link rel="stylesheet" href="{% static 'css/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
@@ -31,13 +32,13 @@
 <body style="background-color: #d7dde2;">
 
     <div class="container">
-        <ul id="gn-menu" class="gn-menu-main" style="background-color: #507197;">
+        <ul id="gn-menu" class="gn-menu-main" style="border-bottom: 1px solid rgb(207, 207, 207);">
             <li class="gn-trigger" style="background-color:white;">
 
                 <a class="gn-icon gn-icon-menu"></a>
                 <nav class="gn-menu-wrapper">
                     <div class="gn-scroller">
-                        <ul class="gn-menu">
+                        <ul class="gn-menu" >
 
                             <li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home"
                                         style="padding:18px; font-size: 28px;"></i>Home</a></li>
@@ -50,6 +51,9 @@
                                         style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
                             <li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out"
                                         style="padding:18px; font-size: 28px;"></i>Logout</a></li>
+                                <li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle"
+                                     style="padding:18px; font-size: 28px;"></i>FAQ</a></li>
+                            
             </li>
         </ul>
     </div><!-- /gn-scroller -->
@@ -65,7 +69,7 @@
     <script>
         new gnMenu(document.getElementById('gn-menu'));
     </script>
-    <div class="search-box">
+    <div class="search-box" style="border-top: 1px solid rgb(199, 199, 199);">
 
         <form class="form1" action="{% url 'my_tests:search' user_id %}" method="POST">
 
@@ -86,8 +90,8 @@
 
 
 
-            <input type="text" name="school" placeholder="school" value="" autocomplete="off">
-            <select name="viloyat">
+            <input class="school" type="text" name="school" placeholder="school" value="" autocomplete="off">
+            <select class="viloyat" name="viloyat">
                 <option value="jizzax shaxar">jizzax shaxar</option>
                 <option value="Arnasoy">Arnasoy</option>
                 <option value="Baxmal">Baxmal </option>
@@ -109,7 +113,7 @@
     </div>
 
 
-    <div class="studs">
+    <div class="studs containerw">
         {% if students %}
         <table class="table  table-bordered mt-1">
             <tr>

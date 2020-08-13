@@ -21,19 +21,20 @@
 	<link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
 	<script src="{% static 'js/modernizr.custom.js' %}"></script>
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 </head>
 
-<body>
+<body style="background-color: rgb(63, 117, 153);">
 	<div class="container">
-		<ul id="gn-menu" class="gn-menu-main">
+		<ul id="gn-menu" style="border-bottom: 1px solid rgb(199, 199, 199);" class="gn-menu-main">
 			<li class="gn-trigger">
 				<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
 				<nav class="gn-menu-wrapper">
 					<div class="gn-scroller">
-						<ul class="gn-menu">
+						<ul class="gn-menu" >
 
 							<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home"
 										style="padding:18px; font-size: 28px;"></i>Home</a></li>
@@ -53,9 +54,9 @@
 			</li>
 			<li><a class="codrops-icon codrops-icon-drop" href=""><span>{{ admin.username }}</span></a></li>
 		</ul>
-		<header>
-			<h1>Admin panelga xush kelibsiz!</h1>
-		</header>
+		
+			<h2 style=" text-align: center; color: white; margin-top: 30%;">Admin panelga xush kelibsiz!</h2>
+		
 	</div><!-- /container -->
 	<script src="{% static 'js/classie.js' %}"></script>
 	<script src="{% static 'js/gnmenu.js' %}"></script>

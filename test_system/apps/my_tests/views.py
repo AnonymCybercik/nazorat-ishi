@@ -47,6 +47,7 @@ def register(request,user_id):
                 return HttpResponseRedirect(reverse("my_tests:register",args=(user_id,)))
             else:
                 full = 'inpass'
+                
 
     context = {
 
@@ -174,12 +175,7 @@ def user_login(request):
         for i in a:
             if i.username == username:
                 if i.password == password:
-                    return redirect(reverse("my_tests:student_choice",args=(i.id,)))
-        for i in a:
-            if i.username == username:
-                if i.password == password:
-                    if i.add_test == True:
-                        return redirect(reverse("my_tests:choice",args=(i.id,)))
+                    return redirect(reverse("my_tests:user_profile",args=(i.id,)))
         
     
     context = {
@@ -189,7 +185,16 @@ def user_login(request):
 
     return render(request,'my_tests/login.html',context)
 
+def user_profile(request,stud_id):
 
+    a = Student.objects.get(id = stud_id)
+
+    context = {
+        "stud_id":stud_id,
+        "student":a,
+    }
+
+    return render(request,'my_tests/user-profile.html',context)
 
 def home(request):
     
@@ -253,17 +258,16 @@ def add_test(request,user_id,test_id):
 
 def student_choice(request,student_id):
 
-    fan = request.POST.get('fanlar')
-    sinf = request.POST.get('sinf')
+    verificate9 =Sinflarfanlar.objects.all().filter(sinf='9')
+    verificate10 =Sinflarfanlar.objects.all().filter(sinf='10')
+    verificate11 =Sinflarfanlar.objects.all().filter(sinf='11')
 
-    if fan and sinf:
-        try:
-            test = Sinflarfanlar.objects.get(fanlar = fan, sinf = sinf)
-            return redirect(reverse('my_tests:test',args=(student_id,test.id,)))
-        except Exception as e:
-            print(e)
+           
     context = {
-        'student_id':student_id
+        'student_id':student_id,
+        "verificate9":verificate9,
+        "verificate10":verificate10,
+        "verificate11":verificate11,
     }
 
     return render(request,'my_tests/student choice.html',context)
