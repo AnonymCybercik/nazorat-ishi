@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css\css\bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css\result.css' %}">
+
+</head>
+<body>
+
+<div class="text-center" >
+    <p class="h4">TO'G'RI JAVOBLAR</p>
+    <p style="font-size:56px ;" class="font-weight-bold">{{javob}}</p>
+</div>
+
+    
+</body>
+</html>
+
+{% endblock %}

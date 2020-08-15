@@ -8,7 +8,9 @@
 {% block content %}
 
 <!-- CSS uchin lik -->
-<link rel="stylesheet" href="{% static '' %}">
+
+
+<span id="time" >01:00</span>
 
     {% if testlar %}
     
@@ -23,7 +25,7 @@
                 <input type="radio" name="{{a.question}}" value="D"> {{ a.D }}<br>
 
             {% endfor %}
-            <button type="submit">testni tugatish</button>
+            <button id="btn" type="submit">testni tugatish</button>
         </form>
     
     {% else %}
@@ -33,6 +35,7 @@
     
 
 {% endif %}
+<script src="{% static 'js/main.js' %}"></script>
 
 
 

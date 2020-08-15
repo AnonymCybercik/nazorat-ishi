@@ -277,16 +277,15 @@ def test(request,student_id,test_id):
     t = 0
 
     testlar = Sinflarfanlar.objects.get(id = test_id)
-
+    data = request.POST
     all_tests = testlar.test_set.order_by('?')[:30]
+    if data:
+        for a in all_tests:
+            data = request.POST.get(a.question)
+            if data == a.answer:
+                t+=1
 
-    for a in all_tests:
-        data = request.POST.get(a.question)
-        print(data,a.answer)
-        if data == a.answer:
-            t+=1
-    
-            return HttpResponse('to`g`ri javoblar: '+str(t))
+        return render(request,'my_tests/result.html',{"javob":t,"student_id":student_id})
     
 
     context = {
