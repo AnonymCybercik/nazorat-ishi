@@ -20,6 +20,8 @@
 	<meta name="author" content="Codrops" />
 	<link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
@@ -52,7 +54,31 @@
 					</div><!-- /gn-scroller -->
 				</nav>
 			</li>
-			<li><a class="codrops-icon codrops-icon-drop" href=""><span>{{ admin.username }}</span></a></li>
+			
+			<label id="cog" for="over"><i class="fa fa-cog"></i></label>
+			<input type="checkbox" name="" id="over">
+			
+			<div class="over float-right pr-2 " >
+			
+			
+			
+				<form action="{% url 'my_tests:adminSettings' user_id admins.id %}" method="POST">
+					{% csrf_token %}
+					
+					  
+						<label class="mr-2 ml-2 font-weight-bold" for="Test">Test</label>
+						<input class=" mr-2 ml-2" type="radio" id="Test" name="admin" value="Test">
+						<label class="mr-2 ml-2 font-weight-bold" for="Student">Student</label>
+						<input class="mr-2 ml-2" type="radio" id="Student" name="admin" value="Student">
+						<label class="mr-2 ml-2 font-weight-bold" for="OFF">OFF</label>
+						<input class="mr-2 ml-2" type="radio" id="OFF" name="admin" value="off">
+					  
+					<button class=" mb-2 btn btn-primary btn-sm" type="submit">saqlash</button>
+				
+				</form>
+			
+			</div>
+			
 		</ul>
 		
 			<h2 style=" text-align: center; color: white; margin-top: 30%;">Admin panelga xush kelibsiz!</h2>
@@ -63,6 +89,10 @@
 	<script>
 		new gnMenu(document.getElementById('gn-menu'));
 	</script>
+
+
+
+
 </body>
 
 </html>

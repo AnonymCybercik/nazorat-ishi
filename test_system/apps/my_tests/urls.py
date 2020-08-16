@@ -12,6 +12,7 @@ urlpatterns = [
     path('',views.user_login,name = 'user_login'),
     path(r'{<int:user_id>}/students',views.search,name = 'search'),
     path(r'{<int:user_id>}/admin',views.admin,name = 'admin'),
+    path(r'{<int:user_id>}/{<int:admin_id>}/admin',views.adminSettings,name = 'adminSettings'),
     path(r'{<int:user_id>}/{<int:stud_id>}/edit',views.edit,name = 'edit'),
     path(r'{<int:user_id>}/{<int:stud_id>}/save',views.save,name = 'save'),
     path(r'{<int:user_id>}/{<int:stud_id>}/delete',views.delete,name = 'delete'),

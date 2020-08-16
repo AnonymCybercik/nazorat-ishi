@@ -6,7 +6,7 @@ import random
 from django.urls import reverse
 
 from django.contrib.auth import authenticate,logout,login
-from my_tests.models import Student,Sinflarfanlar,Test
+from my_tests.models import Student,Sinflarfanlar,Test,AdditionalAdmin
 
 def register(request,user_id):
 
@@ -75,6 +75,7 @@ def tests(request,user_id):
 def admin(request,user_id):
 
     a = User.objects.get(id = user_id)
+    n = AdditionalAdmin.objects.get(id = 1)
 
     all_students = Student.objects.all()
     all_tests = Test.objects.all()
@@ -86,7 +87,8 @@ def admin(request,user_id):
         "user_id":a.id,
         "all_s":number_s,
         "all_t":number_t,
-        "admin":a
+        "admin":a,
+        "admins":n
     }
 
     return render(request,"my_tests/admin.html",context)
@@ -271,6 +273,30 @@ def student_choice(request,student_id):
     }
 
     return render(request,'my_tests/student choice.html',context)
+
+def adminSettings(request,user_id,admin_id):
+
+    n = AdditionalAdmin.objects.get(id = admin_id)
+
+    allow = request.POST.get("admin")
+    if allow == "Test":
+        n.allowTest = True
+        n.allowStudent = False
+        n.save()
+    elif allow == "Student":
+        n.allowStudent = True
+        n.allowTest = False
+        n.save()
+    elif allow == 'off':
+        n.allowTest = False
+        n.allowStudent = False
+        n.save()
+
+
+
+
+
+    return redirect(reverse("my_tests:admin",args = (user_id,)))
 
 def test(request,student_id,test_id):
 

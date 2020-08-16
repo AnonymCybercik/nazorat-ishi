@@ -1,51 +1,23 @@
-body{
-    margin: 0;
-    padding: 0;
-}
-.container{
-    position: relative;
-    text-align: left;
-    height: 100vh;
-    background-color: blue;
-    width: 15%;
-}
-.container.label{
-    padding: 20px;
-}
-ul{
-    position: absolute;
-    top: -20%;
-    list-style: none;
-}
-#check{
-    display: none;
-}
-ul.ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    
-}
-ul li{
-    padding: 25px;
-    background-color: blue;
-    font-size: 18px;
+.over{
+  position: relative;
+  left: 50%;
+  margin-top: 5%;
+  transition: 0.5s;
+  background-color: white;
 }
 
-.labl{
-    font-size: 18px;
-    padding:0 25px;
-    height: 10%;
-    transform: translateY(30%);
-    background-color: blue;
-    color: wheat;
-    position: relative;
+#over:checked ~ .over{
+  left: 5%;
 }
-
-a{
-    text-decoration: none;
-    color: white;
+#over{
+  display: none;
+  
 }
-#active{
-	background-color: rgb(9, 9, 12);
+#cog{
+  position: relative;
+  font-size:30px ;
+  padding:0 20px;
+  cursor: pointer;
+  float: right;
+  border-left:1px solid #a0a0a0 ;
 }
