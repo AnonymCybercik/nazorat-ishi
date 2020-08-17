@@ -2,24 +2,34 @@
 
 {% load static %}
 
-{% block title %}Tizimga kirish{% endblock %}
+
 
 {% block content %}
 
 <!-- CSS uchin lik -->
-<link rel="stylesheet" type="text/css" href="{%  static 'css\style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{%  static 'css\style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'css\media.css' %}">
+    <title>{% block title %}Tizimga kirish{% endblock %}</title>
+</head>
+<body>
 
-<section class="login-page">
+<section  class="m-text-sm login-page">
     <form action="{% url 'my_tests:user_login' %}" method="POST">
         {% csrf_token %}
          <div class="box">
                 <div class="form-head">
                       <h2>Ro'yxatdan O'tish</h2>
                 </div>
-                <div class="form-body">
+                <div  class="form-body">
                     
-                    <input name="username" type="text" placeholder="username" autocomplete="off"><br>
-                    <input name="password" type="password" placeholder="password"><br>
+                    <input class="m-text-sm" name="username" type="text" placeholder="Username" autocomplete="off"><br>
+                    <input class="m-text-sm" name="password" type="password" placeholder="Password"><br>
                 </div>
                 <div class="form-footer">
                       <button type="submit">Sign In</button>
@@ -30,6 +40,8 @@
 <form >
 
 </form>
+</body>
+</html>
 
 
 

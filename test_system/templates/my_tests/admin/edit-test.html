@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}EDIT{% endblock %}
+
+{% block content %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- CSS uchin lik -->
+        <link rel="stylesheet" href="{% static 'css\admin\edit-test.css' %}">
+		<link rel="stylesheet" href="{% static 'css/media.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+
+    <body >
+
+	<div class="bar">
+		<span class=" btn btn-primary"><a class="text-decoration-none text-light" href="{% url 'my_tests:choice' user_id %}">Testlar</a></span>
+	</div>
+    <div class="containerw mt-4">
+        {% if test %}
+        <table class="table table-hover table-bordered">
+            <tr>
+            <thead>
+                <th class="pl-3">Savol</th>
+                <th></th>
+            </thead>
+            {% for i in test %}
+            <tbody >
+                    
+                    <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" class="text-decoration-none text-secondary">{{i.question}}</th></a>
+                    <th><a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
+						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
+						href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
+						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
+            </tbody>
+            {% endfor %}
+        </tr>
+		</table>
+		{% else %}
+
+        <div style="margin-top:20% ;" class="text-center h1">OOPS</div>
+        {% endif %}
+    </div>
+    </body>
+
+
+
+{% endblock %}

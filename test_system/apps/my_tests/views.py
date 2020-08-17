@@ -104,6 +104,10 @@ def edit_test(request,user_id,test_id):
     }
     
     
+    a = AdditionalAdmin.objects.get(id = 1)
+
+    if a.allowTest == True:
+        return render(request,"my_tests/admin/edit-test.html",context)
     
 
     return render(request,'my_tests/edit-test.html',context)
@@ -170,7 +174,7 @@ def user_login(request):
     user = authenticate(username=username, password=password)
     a = Student.objects.all()
 
-
+    n = AdditionalAdmin.objects.all()
     if user:
         return redirect(reverse("my_tests:admin",args=(user.id,)))
     elif not(user):
@@ -178,7 +182,13 @@ def user_login(request):
             if i.username == username:
                 if i.password == password:
                     return redirect(reverse("my_tests:user_profile",args=(i.id,)))
-        
+
+        for d in n:
+            if d.allowTest == True:
+                if d.username == username:
+                    if d.password == password:
+                        return redirect(reverse("my_tests:choice",args=(i.id,)))
+
     
     context = {
 
@@ -222,6 +232,7 @@ def choice(request,user_id):
     verificate10 =Sinflarfanlar.objects.all().filter(sinf='10')
     verificate11 =Sinflarfanlar.objects.all().filter(sinf='11')
 
+
            
     context = {
         'user_id':user_id,
@@ -229,6 +240,11 @@ def choice(request,user_id):
         "verificate10":verificate10,
         "verificate11":verificate11,
     }
+    a = AdditionalAdmin.objects.get(id = 1)
+
+    if a.allowTest == True:
+        return render(request,"my_tests/admin/adminChoise.html",context)
+
     
     return render(request,'my_tests/choice.html',context)
 
@@ -255,6 +271,10 @@ def add_test(request,user_id,test_id):
         "test_id":test_id,
 
     }
+    a = AdditionalAdmin.objects.get(id = 1)
+
+    if a.allowTest == True:
+        return render(request,"my_tests/admin/add_test.html",context)
 
     return render(request,'my_tests/add_test.html',context)
 

@@ -15,16 +15,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css\css\bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css\profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css\media.css' %}">
     <title>Document</title>
 </head>
 <body>
     <div class="menu">
-        <a class="btn btn-secondary" href="{% url 'my_tests:student_choice' stud_id %}">TEST ISHLASH</a>
+        <a class="btn btn-sml btn-secondary" href="{% url 'my_tests:student_choice' stud_id %}">TEST ISHLASH</a>
     </div>
     <div class="container">
         
-        <div class="user-info">
-            <img width="200px" src="https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png" alt="user">
+        <div class="user-info m-text-sm">
+            <img width="200px" src="{% static 'img/user.webp' %}">
             <p class="">Ism: {{student.first_name}}</p>
             <p class="">Familya: {{student.last_name}}</p>
             <p class="">Username: {{student.username}}</p>
@@ -37,7 +38,9 @@
 
 
     </div>
-    
+
+
+
 </body>
 </html>
 

@@ -1,33 +1,45 @@
-@media (max-width: 1125px) {
-    .containerw{
-
-        margin-top: 12%;
-        left:31%;
-
+@media only screen and (max-width: 600px) 
+   {    
+        .user-info{
+            padding: 0 15%;
+            background: ;
+        }
+        .user-info img{
+            width: 130px;
+        }
+        .btn-sml{
+            font-size: 14px;
+        }
+        .m-text-lg{
+            font-size: 32px;
+        }
+        .m-text-md{
+            font-size: 24px;
+        }
+        .m-text-sm{
+            font-size: 12px;
+        }
+        .login-page .box .form-body input{
+            position: relative;
+            width: 80%;
+            margin-bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            
+        }
+        .m-input-md{
+            width: 60%;
+        }
+        .m-input-sm{
+            width: 40%;
+        }
+        .m-center{
+           align-content: center;
+        }
+        .login-page .box .form-footer button{
+            padding: 0 20px;
+            font-size: 12px;
 
 }
-.inline{
-    display: inline-block;
 }
-    .search-box{
-        padding:20px 380px;
-        margin-top: 4%;
-    }
-    .school{
-        width: 80px;
-        font-size: 14px;
-    }
-    select{
-        width: 100px;
-        font-size: 14px;
-    }
-    .viloyat{
-        width: 130px;
-    }
-    .next{
-        height: 90%;
-        width: 69%;
-        margin-top:0.1%;
-
-    }
-  }
+}

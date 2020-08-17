@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS uchin lik -->
+        <link rel="stylesheet" href="{% static 'css\choice.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+
+    </head>
+    <body>
+
+
+<div>
+<header>9-SINF</header>
+<hr>
+{% if verificate9 %}
+
+    {% for i in verificate9 %}
+    <li class="li"><p class="p9">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    {% endfor %}
+{% endif %}
+<br>
+<hr>
+<header>10-SINF</header>
+<hr>
+
+{% if verificate10 %}
+
+    {% for i in verificate10 %}
+    <li class='li'><p class="p10">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    {% endfor %}
+{% endif %}
+
+<br>
+<hr>
+<header>11-SINF</header>
+<hr>
+{% if verificate11 %}
+
+    {% for i in verificate11 %}
+    <li class="li"><p class="p11">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 45px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
+    {% endfor %}
+{% endif %}
+</div>
+
+{% endblock %}
