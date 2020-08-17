@@ -13,15 +13,40 @@ header{
     padding: 40px;
     margin-left: 18%;
     margin-right: 18%;
+    
 }
 #variantlar{
 text-align: right;
-
-}#a, #b , #c ,#d:hover{
-    background-color: darkgreen;
 }
+
+
 img{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    margin-left:20px;
 }
 
+
+p{
+
+margin-right: 10px;
+margin-left: -40px;
+margin-top: 15px;
+}
+#l{
+    margin-left: -20px;
+}
+#time{
+    border: solid 1px;
+    border-radius: 30%;
+    background-color: yellow;
+    color: red;
+    border-right:100px ;
+}
+.varinatlar{
+    margin-right: 100px;
+}
+@media screen and (min-width:px){
+    body{
+    background-color:red;
+}}
