@@ -1,0 +1,23 @@
+.over{
+  position: relative;
+  left: 50%;
+  margin-top: 5%;
+  transition: 0.5s;
+  background-color: white;
+}
+
+#over:checked ~ .over{
+  left: 5%;
+}
+#over{
+  display: none;
+  
+}
+#cog{
+  position: relative;
+  font-size:30px ;
+  padding:0 20px;
+  cursor: pointer;
+  float: right;
+  border-left:1px solid #a0a0a0 ;
+}

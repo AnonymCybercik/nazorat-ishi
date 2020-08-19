@@ -1,0 +1,126 @@
+body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+.containerw{
+    position: absolute;
+    width: 74.5%;
+    height: 90%;
+    top: 9.3%;
+    left: 25.3%;
+    translate: (-50%,-50%);
+    background: #ffffff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: #ffffff;
+    padding: 30px;
+    margin: 0;
+    scroll-snap-type: unset;
+}
+.containerw::after{
+    top:3px;
+    left: 3px;
+    right: 3px;
+    bottom: -320px;
+    position: absolute;
+    
+}
+.inputs{
+display: flex;
+flex-direction: column;
+margin-right: 15px;
+margin-left: 15px;
+margin:10px 0;
+
+} 
+input{
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid;
+    padding: 7px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-color: #3287a8;
+    outline: none;
+    background:#ffffff;
+}
+select{
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+    font-size: 16px;
+    margin-top: 5px;
+    border-color:  #3287a8 ;
+    margin:10px 0;
+
+}
+
+
+.select3{
+    width: 90%;
+}
+button{
+    width: 100px;
+    height: 45px;
+    margin-top: 90px;
+    background-color:  #3287a8;
+    border: 1px solid  #3287a8;
+    color: #ffffff;
+    font-size: medium;
+    font-family: sans-serif;
+    display: inline;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+.reset{
+    background: none;
+    border:1px solid black;
+    color: black;
+}
+.label1{
+    display: flex;
+    flex-direction: column;
+    color:black;
+    padding: 10px 0;
+}
+.form_head{
+    text-align: center;
+}
+.form_body2{
+margin-top: 10px;    
+}
+h2{
+    border-bottom: 1.5px solid;
+    width: 90%;
+    border-color:  #3287a8 ;
+    color:  #3287a8;
+}
+
+.label1{
+    margin-top: 10px;
+}
+.from_footer{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.select1{
+    display: inline-block;
+    width: 45%;
+}
+.select2{
+    display: inline-block;
+    width: 44.5%;
+}
+
