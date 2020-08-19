@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load staticfiles %}
 
 
 
@@ -28,8 +28,8 @@
                 </div>
                 <div  class="form-body">
                     
-                    <input class="m-text-sm" name="username" type="text" placeholder="Username" autocomplete="off"><br>
-                    <input class="m-text-sm" name="password" type="password" placeholder="Password"><br>
+                    <input class="m-text-sm" name="username" type="text" placeholder="Username" autocomplete="off" required=true><br>
+                    <input class="m-text-sm" name="password" type="password" placeholder="Password" required=true><br>
                 </div>
                 <div class="form-footer">
                       <button type="submit">Sign In</button>
