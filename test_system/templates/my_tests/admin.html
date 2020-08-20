@@ -40,12 +40,20 @@
 
 							<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home"
 										style="padding:18px; font-size: 28px;"></i>Home</a></li>
+							{% if not admins.allowStudent %}		
 							<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users"
 										style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
+							{% endif %}
+							{% if not admins.allowTest %}									
+
 							<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-sticky-note"
 										style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
+							{% endif %}
+							{% if not admins.allowStudent %}									
 							<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus"
 										style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
+							{% endif %}
+
 							<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out"
 										style="padding:18px; font-size: 28px;"></i>Logout</a></li>
 							<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle"

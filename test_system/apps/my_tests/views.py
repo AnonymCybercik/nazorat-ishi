@@ -58,6 +58,10 @@ def register(request,user_id):
 
 
     }
+    a = AdditionalAdmin.objects.get(id = 1)
+
+    if a.allowStudent == True:
+        return render(request,"my_tests/admin/register.html",context)
 
     return render(request,'my_tests/register.html',context)
 
@@ -188,6 +192,11 @@ def user_login(request):
                 if d.username == username:
                     if d.password == password:
                         return redirect(reverse("my_tests:choice",args=(i.id,)))
+
+            elif d.allowStudent == True:
+                if d.username == username:
+                    if d.password == password:
+                        return redirect(reverse("my_tests:register",args=(i.id,)))
 
     
     context = {
@@ -360,6 +369,10 @@ def search(request,user_id):
         "school_data":school_data,
         "viloyat":viloyat,
     }
+    a = AdditionalAdmin.objects.get(id = 1)
+    
+    if a.allowStudent == True:
+        return render(request,"my_tests/admin/students.html",context)
 
     return render(request,"my_tests/students.html",context)
 
@@ -379,6 +392,13 @@ def edit(request,user_id,stud_id):
         "password":  a.password,
         "viloyat":   a.viloyat,
     }
+
+    n = AdditionalAdmin.objects.get(id = 1)
+
+
+
+    if n.allowStudent == True:
+        return render(request,"my_tests/admin/edit-stud.html",context)
     
     
     
@@ -399,6 +419,10 @@ def edit_test_temp(request,user_id,test_id):
         "D":a.D,
         "answer":a.answer,
     }
+    a = AdditionalAdmin.objects.get(id = 1)
+
+    if a.allowTest == True:
+        return render(request,"my_tests/admin/add_test_temp.html",context)
 
     return render(request,'my_tests/add_test_temp.html',context)
 
@@ -421,6 +445,7 @@ def test_save(request,user_id,test_id):
         a.D = D
         a.answer = answer
         a.save()
+
 
         return redirect(reverse("my_tests:edit_test_temp",args=(user_id,test_id,)))
 

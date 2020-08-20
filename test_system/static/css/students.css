@@ -12,6 +12,12 @@
     /* position: relative; */
     width: 200%;
 }
+
+.midleX{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 select{
     padding: 10px;
     border: none;
@@ -60,6 +66,26 @@ button:hover{
     bottom: -320px;
     position: absolute;
 }
+.adminstuds{
+    position: relative;
+    background-color: white;
+    position: absolute;
+    overflow-x: hidden;
+    margin-top: 9.9%;
+    border-top: 1px solid #c2c6ca;
+    height:79%;
+    left: 25%;
+    overflow-y: scroll;
+    width: 75%;
+}
+.adminstuds::after{
+    top:3px;
+    left: 3px;
+    right: 3px;
+    bottom: -320px;
+    position: absolute;
+}
+
 
 
 

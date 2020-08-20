@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}Test qo`shish{% endblock %}
+
+{% block content %}
+
+<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- CSS uchin lik -->
+        <link rel="stylesheet" href="{% static 'css\add-test.css' %}">
+        <link rel="stylesheet" href="{% static 'css\choice.css' %}">
+        <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+
+    <body style="background: #ffff;">
+
+<div class="bar p-2" style="border-bottom: 1px solid black; background-color: #3d3d3d;">
+	<span class="m-2 btn btn-secondary"><i class="fa fa-home"></i><a class="text-decoration-none text-light" href="{% url 'my_tests:choice' user_id %}"> Home</a></span>
+
+</div>
+
+        
+<div class="m-3">
+
+<form  action="{% url 'my_tests:test_save' user_id test_id %}" method="POST">
+
+    {% csrf_token %}
+    <label for="QUESTION">Savolni kiriting</label>
+    <textarea style="outline: none;" id="QUESTION" class="input-group" name="question"  rows="5" >{{question}}</textarea>
+    <label for="A">A - Variant</label>
+    <input value="{{A}}" style="outline: none;" id="A" class="input-group" autocomplete="off" type="text" name ='A'>
+    <label for="B">B - Variant</label>
+    <input value ="{{B}}" style="outline: none;" id="B" class="input-group" autocomplete="off" type="text" name ='B'>
+    <label for="C">C - Variant</label>
+    <input value = "{{C}}" style="outline: none;" id="C" class="input-group" autocomplete="off" type="text" name ='C'>
+    <label for="D">D - Variant</label>
+    <input value = "{{D}}"  style="outline: none;" id="D" class="input-group" autocomplete="off" type="text" name ='D'>
+    <label for="select">To`g`ri javobni tanlang</label><br>
+    <select style="outline: none; color: #727272;" id="select" class="w-25" name="answer" >
+        <option value="{{answer}}">{{answer}} - Variant</option>
+        <option value="A">A - Variant</option>
+        <option value="B">B - Variant</option>
+        <option value="C">C - Variant</option>
+        <option value="D">D - Variant</option>
+    </select><br>
+    <button type="submit" class="btn mt-3 btn-primary">Saqlash</button>
+</form>
+</div>
+{% endblock %}

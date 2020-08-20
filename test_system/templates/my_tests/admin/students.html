@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JVXTV test sistemasi{% endblock %}
+
+{% block content %}
+
+<!-- CSS uchin lik -->
+
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+    <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+    <meta name="author" content="Codrops" />
+    <link rel="stylesheet" href="{% static 'css/students.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+</head>
+
+<body style="background-color: #fff;">
+    <div class="bar p-2" style="border-bottom: 1px solid black; background-color: #3d3d3d;">
+        <span class="m-2 btn btn-secondary"><a class="text-decoration-none text-light" href="{% url 'my_tests:register' user_id %}"> O`quvchi qo`shish</a></span>
+
+    </div>
+
+    <div class="m-3" style="padding-left:25%;" >
+
+        <form action="{% url 'my_tests:search' user_id %}" method="POST">
+
+            {% csrf_token %}
+
+            <select style="background: none;" name="grade">
+                <option value="9">9-Sinf</option>
+                <option value="10">10-Sinf</option>
+                <option value="11">11-Sinf</option>
+            </select>
+            <select style="background: none;" name="grade2">
+                <option value="A">A Sinf</option>
+                <option value="B">B Sinf</option>
+                <option value="V">V Sinf</option>
+                <option value="G">G Sinf</option>
+                <option value="D">D Sinf</option>
+            </select>
+
+
+
+            <input  class="school" type="text" name="school" placeholder="school" value="" autocomplete="off">
+            <select style="background: none;" class="viloyat" name="viloyat">
+                <option value="jizzax shaxar">jizzax shaxar</option>
+                <option value="Arnasoy">Arnasoy</option>
+                <option value="Baxmal">Baxmal </option>
+                <option value="Do'stlik">Do'stlik </option>
+                <option value="Sharof Rashidov">Sharof Rashidov</option>
+                <option value="Zarbdor">Zarbdor</option>
+                <option value="Zafarobod">Zafarobod</option>
+                <option value="Zomin">Zomin</option>
+                <option value="Mirzacho'l">Mirzacho'l</option>
+                <option value="Paxtakor">Paxtakor</option>
+                <option value="Yangiobod">Yangiobod</option>
+                <option value="Forish">Forish</option>
+                <option value="G'allaorol">G'allaorol</option>
+            </select>
+
+            <button type='submit' class="btn btn-outline-primary">search</button>
+
+        </form>
+    </div>
+
+
+    <div class="adminstuds">
+        {% if students %}
+        <table class="table  table-bordered mt-1">
+            <tr>
+                <thead class="table-light">
+                    <th>Ism</th>
+                    <th>Familya</th>
+                    <th></th>
+                </thead>
+                {% for num in students %}
+
+                <tbody class="text-secondary">
+                    <th> {{ num.first_name }}</th>
+                    <th>{{ num.last_name }} </th>
+                    <th><a href="{% url 'my_tests:delete' user_id num.id %}"
+                            class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
+                            href="{% url 'my_tests:edit' user_id num.id %}"
+                            class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
+                    </tdoby>
+                    {% endfor %}
+
+            </tr>
+        </table>
+        {% else %}
+
+        <div style="margin-top:20% ;" class="text-center h1">OOPS</div>
+
+        {% endif %}
+    </div>
+
+    {% endblock %}
