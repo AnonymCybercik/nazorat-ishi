@@ -1,70 +1,48 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
+from django.contrib import messages
+from my_tests.forms import CreateUserForm
+from my_tests.decorators import allowed_users,unauthenticated_user
 
 import random
 
 from django.urls import reverse
+from django.contrib.auth.models import Group
 
 from django.contrib.auth import authenticate,logout,login
 from my_tests.models import Student,Sinflarfanlar,Test,AdditionalAdmin
 
+@login_required(login_url='/accounts/login/')
 def register(request,user_id):
+    form = CreateUserForm()
 
-    username = request.POST.get('username')
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
-    school = request.POST.get('school')
-    grade = request.POST.get('grade')
-    grade2 = request.POST.get('grade2')
-    password = request.POST.get('password')
-    validator = request.POST.get('validator')
-    viloyat = request.POST.get('viloyat')
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect(reverse("my_tests:register",args = (user_id,)))
 
-
-    students = Student.objects.all()
-
-    data = username,first_name,last_name,school,grade,password,validator,viloyat
+            group = Group.objects.get(name='student')
+            user.groups.add(group)
 
 
-    usernames = []    
-
-    for student in students:
-        usernames.append(student.username)
 
 
-    s = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM@#$%&*_-'
-    sr = ''.join(random.sample(s, len(s)))
-
-    full = ''
-
-    if username and viloyat and password and first_name and last_name and school and grade and validator:
-        if username in usernames:
-            full = 'inusername'
-        else:
-            if password == validator:
-                a = Student(first_name = first_name,last_name = last_name ,username = username , password = password,school=school,grade=grade,grade2=grade2,viloyat = viloyat)
-                a.save()
-                return HttpResponseRedirect(reverse("my_tests:register",args=(user_id,)))
-            else:
-                full = 'inpass'
-                
 
     context = {
 
-        "user_id":user_id,
-        "error":full,
-        "recpas":sr[:10]
 
+        'user_id':user_id,
+        'form':form
 
 
     }
-    a = AdditionalAdmin.objects.get(id = 1)
-
-    if a.allowStudent == True:
-        return render(request,"my_tests/admin/register.html",context)
 
     return render(request,'my_tests/register.html',context)
 
+@login_required(login_url='/accounts/login/')
 def tests(request,user_id):
     a = User.objects.get(id = user_id)
     context = {
@@ -75,7 +53,8 @@ def tests(request,user_id):
 
 
 
-
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def admin(request,user_id):
 
     a = User.objects.get(id = user_id)
@@ -96,6 +75,7 @@ def admin(request,user_id):
     }
 
     return render(request,"my_tests/admin.html",context)
+@login_required(login_url='/accounts/login/')
 def edit_test(request,user_id,test_id):
 
     test = Sinflarfanlar.objects.get(id = test_id)
@@ -104,18 +84,15 @@ def edit_test(request,user_id,test_id):
     context = {
         "user_id":   user_id,
         "test_id":   test_id,
-        "test":      test, 
+        "test":      test,
     }
-    
-    
-    a = AdditionalAdmin.objects.get(id = 1)
 
-    if a.allowTest == True:
-        return render(request,"my_tests/admin/edit-test.html",context)
-    
+
+
+
 
     return render(request,'my_tests/edit-test.html',context)
-
+@login_required(login_url='/accounts/login/')
 def delete(request,user_id,stud_id):
     try:
         a = Student.objects.get(id = stud_id)
@@ -124,7 +101,7 @@ def delete(request,user_id,stud_id):
         return redirect(reverse("my_tests:search",args = (user_id,)))
 
     return redirect(reverse("my_tests:search",args = (user_id,)))
-    
+@login_required(login_url='/accounts/login/')
 def save(request,user_id,stud_id):
     username = request.POST.get('username')
     first_name = request.POST.get('first_name')
@@ -158,57 +135,34 @@ def save(request,user_id,stud_id):
     a.save()
 
     return redirect("my_tests:edit",args=(user_id,stud_id,))
-def alls(request,user_id,test_id):
 
-    a = Sinflarfanlar.objects.get(id = test_id)
-
-    tests = a.test_set.order_by("-id")
-
-    context = {
-        "user_id":user_id,
-        "tests":tests,
-    }
-
-    return render(request,"my_tests/alls.html",context)
 
 def user_login(request):
 
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    user = authenticate(username=username, password=password)
-    a = Student.objects.all()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password =request.POST.get('password')
 
-    n = AdditionalAdmin.objects.all()
-    if user:
-        return redirect(reverse("my_tests:admin",args=(user.id,)))
-    elif not(user):
-        for i in a:
-            if i.username == username:
-                if i.password == password:
-                    return redirect(reverse("my_tests:user_profile",args=(i.id,)))
+        user = authenticate(request, username=username, password=password)
+        group = None
+        if request.user.groups.exists():
+            group = request.user.groups.all()[0].name
+        if user is not None:
+            login(request, user)
+            return redirect(reverse('my_tests:user_profile',args = (user.id,)))
+        else:
+            messages.info(request, 'Username yoki Parolda xatolik bor')
 
-        for d in n:
-            if d.allowTest == True:
-                if d.username == username:
-                    if d.password == password:
-                        return redirect(reverse("my_tests:choice",args=(i.id,)))
-
-            elif d.allowStudent == True:
-                if d.username == username:
-                    if d.password == password:
-                        return redirect(reverse("my_tests:register",args=(i.id,)))
-
-    
-    context = {
+    context = {}
+    return render(request, 'my_tests/login.html', context)
 
 
-    }
 
-    return render(request,'my_tests/login.html',context)
-
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=["student"])
 def user_profile(request,stud_id):
 
-    a = Student.objects.get(id = stud_id)
+    a = User.objects.get(id = stud_id)
 
     context = {
         "stud_id":stud_id,
@@ -217,8 +171,10 @@ def user_profile(request,stud_id):
 
     return render(request,'my_tests/user-profile.html',context)
 
+@login_required(login_url='/accounts/login/')
+
 def home(request):
-    
+
     studensts = Student.objects.all()
     tests = Test.objects.all()
 
@@ -231,10 +187,13 @@ def home(request):
 
     return render(request,'my_tests/home.html',context)
 
+@login_required(login_url='/accounts/login/')
 def user_logout(request,user_id):
     logout(request)
     return redirect(reverse("my_tests:user_login"))
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def choice(request,user_id):
 
     verificate9 =Sinflarfanlar.objects.all().filter(sinf='9')
@@ -242,24 +201,20 @@ def choice(request,user_id):
     verificate11 =Sinflarfanlar.objects.all().filter(sinf='11')
 
 
-           
+
     context = {
         'user_id':user_id,
         "verificate9":verificate9,
         "verificate10":verificate10,
         "verificate11":verificate11,
+
     }
-    a = AdditionalAdmin.objects.get(id = 1)
 
-    if a.allowTest == True:
-        return render(request,"my_tests/admin/adminChoise.html",context)
-
-    
     return render(request,'my_tests/choice.html',context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def add_test(request,user_id,test_id):
-    
-    
 
     A = request.POST.get('A')
     B = request.POST.get('B')
@@ -280,20 +235,18 @@ def add_test(request,user_id,test_id):
         "test_id":test_id,
 
     }
-    a = AdditionalAdmin.objects.get(id = 1)
-
-    if a.allowTest == True:
-        return render(request,"my_tests/admin/add_test.html",context)
 
     return render(request,'my_tests/add_test.html',context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['student'])
 def student_choice(request,student_id):
 
     verificate9 =Sinflarfanlar.objects.all().filter(sinf='9')
     verificate10 =Sinflarfanlar.objects.all().filter(sinf='10')
     verificate11 =Sinflarfanlar.objects.all().filter(sinf='11')
 
-           
+
     context = {
         'student_id':student_id,
         "verificate9":verificate9,
@@ -303,30 +256,27 @@ def student_choice(request,student_id):
 
     return render(request,'my_tests/student choice.html',context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def adminSettings(request,user_id,admin_id):
 
     n = AdditionalAdmin.objects.get(id = admin_id)
 
     allow = request.POST.get("admin")
-    if allow == "Test":
-        n.allowTest = True
-        n.allowStudent = False
-        n.save()
-    elif allow == "Student":
-        n.allowStudent = True
-        n.allowTest = False
-        n.save()
-    elif allow == 'off':
-        n.allowTest = False
-        n.allowStudent = False
-        n.save()
 
-
+    if allow == True:
+        n.allow = True
+        n.save()
+    else:
+        n.allow = False
+        n.save()
 
 
 
     return redirect(reverse("my_tests:admin",args = (user_id,)))
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['student'])
 def test(request,student_id,test_id):
 
     t = 0
@@ -341,7 +291,7 @@ def test(request,student_id,test_id):
                 t+=1
 
         return render(request,'my_tests/result.html',{"javob":t,"student_id":student_id})
-    
+
 
     context = {
         'testlar':all_tests,
@@ -351,16 +301,18 @@ def test(request,student_id,test_id):
 
     return render(request,'my_tests/test.html',context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def search(request,user_id):
-    
+
 
     grade = request.POST.get('grade')
     grade2 = request.POST.get('grade2')
     school_data = request.POST.get('school')
     viloyat = request.POST.get('viloyat')
-    students = Student.objects.filter(grade = grade,grade2 = grade2,school = school_data,viloyat = viloyat).order_by('last_name')
-   
-        
+    students = User.objects.filter(grade = grade,grade2 = grade2,school = school_data,viloyat = viloyat).order_by('last_name')
+
+
     context = {
 
         "students":students,
@@ -369,13 +321,11 @@ def search(request,user_id):
         "school_data":school_data,
         "viloyat":viloyat,
     }
-    a = AdditionalAdmin.objects.get(id = 1)
-    
-    if a.allowStudent == True:
-        return render(request,"my_tests/admin/students.html",context)
 
     return render(request,"my_tests/students.html",context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def edit(request,user_id,stud_id):
 
     a = Student.objects.get(id = stud_id)
@@ -393,18 +343,12 @@ def edit(request,user_id,stud_id):
         "viloyat":   a.viloyat,
     }
 
-    n = AdditionalAdmin.objects.get(id = 1)
-
-
-
-    if n.allowStudent == True:
-        return render(request,"my_tests/admin/edit-stud.html",context)
-    
-    
-    
 
     return render(request,'my_tests/edit-stud.html',context)
 
+
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def edit_test_temp(request,user_id,test_id):
 
     a = Test.objects.get(id = test_id)
@@ -419,15 +363,13 @@ def edit_test_temp(request,user_id,test_id):
         "D":a.D,
         "answer":a.answer,
     }
-    a = AdditionalAdmin.objects.get(id = 1)
-
-    if a.allowTest == True:
-        return render(request,"my_tests/admin/add_test_temp.html",context)
 
     return render(request,'my_tests/add_test_temp.html',context)
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def test_save(request,user_id,test_id):
-    
+
     question = request.POST.get('question')
     A = request.POST.get('A')
     B = request.POST.get('B')
@@ -449,6 +391,8 @@ def test_save(request,user_id,test_id):
 
         return redirect(reverse("my_tests:edit_test_temp",args=(user_id,test_id,)))
 
+@login_required(login_url='/accounts/login/')
+@allowed_users(allowed_roles=['admin'])
 def delete_test(request,user_id,test_id,test_del):
     try:
         a = Test.objects.get(id = test_del)

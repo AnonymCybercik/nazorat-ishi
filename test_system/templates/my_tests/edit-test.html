@@ -11,48 +11,32 @@
 
 
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\containerw.css' %}">
-		<link rel="shortcut icon" href="{% static '../favicon.ico'%}">
+        <link rel="stylesheet" href="{% static 'css/table.css' %}">
 		<link rel="stylesheet" href="{% static 'css/media.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
-		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
-        <script src="{% static 'js/modernizr.custom.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+		<link rel="stylesheet" href="{% static 'css/btn.css' %}">
 
-    <body style="background: #eeeeee;">
+<body>
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Radiosoz</h2>
+        <ul>
+            <li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-user"></i>O`quvchilar</a></li>
+            <li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus"></i>O`quvchi qo`shish</a></li>
+            <li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-sticky-note"></i>Testlar</a></li>
+            <li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out"></i>Logout</a></li>
+            <li><a href="#"><i class="fa fa-phone"></i>Contact Us</a></li>
+        </ul>
 
-			<!-- <ul id="gn-menu" class="gn-menu-main">
-				<li class="gn-trigger"> -->
+    </div>
+    <div class="main_content">
+        <div class="header">Admin Panelga Xush Kelibsiz</div>
+        <div class="info">
 
-		<div class="container">
-			<ul style="border-bottom: 1px solid rgb(207, 207, 207);" id="gn-menu" class="gn-menu-main">
-				<li  class="gn-trigger">
-					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-					<nav class="gn-menu-wrapper">
-                        <div class="gn-scroller">
-							<ul class="gn-menu">
-								
-								<li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home" style="padding:18px; font-size: 28px;"></i>Home</a></li>
-								<li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-users" style="padding:18px; font-size: 28px;"></i>O`quvchilar</a></li>
-								<li><a href="{% url 'my_tests:choice' user_id %}"><i class="fa fa-sticky-note" style="padding:18px; font-size: 28px;"></i>Testlar</a></li>
-								<li><a href="{% url 'my_tests:register' user_id %}"><i class="fa fa-user-plus" style="padding:18px; font-size: 28px;"></i>O`quvchi qo`shish</a></li>
-								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-sign-out" style="padding:18px; font-size: 28px;"></i>Logout</a></li>
-								<li><a href="{% url 'my_tests:user_logout' user_id %}"><i class="fa fa-question-circle" style="padding:18px; font-size: 28px;"></i>FAQ</a></li>
-							</ul>
-						</div><!-- /gn-scroller -->
-					</nav>
-				</li>
-				<li><a class="codrops-icon codrops-icon-drop" href=""><span>{{ admin.username }}</span></a></li>
-			</ul>
-		</div><!-- /container -->
-		<script src="{% static 'js/classie.js' %}"></script>
-		<script src="{% static 'js/gnmenu.js' %}"></script>
-		<script>
-			new gnMenu( document.getElementById( 'gn-menu' ) );
-		</script>
-    <div class="containerw next">
+
+    <div class="">
         {% if test %}
         <table class="table table-hover table-bordered">
             <tr>
@@ -62,12 +46,14 @@
             </thead>
             {% for i in test %}
             <tbody >
-                    
+
                     <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" class="text-decoration-none text-secondary">{{i.question}}</th></a>
-                    <th><a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
-						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
-						href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
-						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
+                    <th>
+						<a href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
+						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+						<a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
+						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+						</th>
             </tbody>
             {% endfor %}
         </tr>
@@ -77,7 +63,11 @@
         <div style="margin-top:20% ;" class="text-center h1">OOPS</div>
         {% endif %}
     </div>
-    </body>
+
+      </div>
+    </div>
+</div>
+</body>
 
 
 

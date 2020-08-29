@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}TEST SISTEMA ADMIN PANELI{% endblock %}
+
+<!-- CSS uchin lik -->
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="{% static '../favicon.ico'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+</head>
+
+<body>
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+Radiosoz</div>
+<input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+<li><a href="{% url 'admin_my_tests:home' user_id %}" class='active'>Home</a></li>
+<li><a href="{% url 'admin_my_tests:search' user_id %}">O`QUVCHILAR</a></li>
+<li><a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a></li>
+<li><a href="{% url 'admin_my_tests:register' user_id %}">O`QUVCHI QO`SHISH</a></li>
+<li><a href="{% url 'admin_my_tests:user_logout' user_id%}">LOGOUT</a></li>
+</ul>
+</nav>
+    <div class="content">
+      <div>ADMIN PANELGA XUSH KELIBSIZ</div>
+
+</body>
+</html>
+
+
+
+</body>
+
+</html>
+
+
+{% endblock %}

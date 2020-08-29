@@ -43,5 +43,4 @@ class AdditionalAdmin(models.Model):
     username = models.CharField(max_length = 20,null = True)
     password = models.TextField(null = True)
 
-    allowTest    = models.BooleanField(null = True)
-    allowStudent = models.BooleanField(null = True)
+    allow    = models.BooleanField(null = True)

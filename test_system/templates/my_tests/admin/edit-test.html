@@ -9,19 +9,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\admin\edit-test.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin/edit-test.css' %}">
 		<link rel="stylesheet" href="{% static 'css/media.css' %}">
+		<link rel="stylesheet" href="{% static 'css/home.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
     <body >
-
-	<div class="bar">
-		<span class=" btn btn-primary"><i class="fa fa-home"></i><a class="text-decoration-none text-light" href="{% url 'my_tests:choice' user_id %}"> Home</a></span>
-	</div>
-    <div class="containerw mt-4">
+<nav>
+      <div class="logo">
+Radiosoz</div>
+<input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+<li><a href="{% url 'admin_my_tests:home' user_id %}">Home</a></li>
+<li><a href="{% url 'admin_my_tests:search' user_id %}">O`QUVCHILAR</a></li>
+<li><a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a></li>
+<li><a href="{% url 'admin_my_tests:register' user_id %}">O`QUVCHI QO`SHISH</a></li>
+</ul>
+</nav>
+    <div class="mt-4">
         {% if test %}
         <table class="table table-hover table-bordered">
             <tr>
@@ -31,11 +42,11 @@
             </thead>
             {% for i in test %}
             <tbody >
-                    
+
                     <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" class="text-decoration-none text-secondary">{{i.question}}</th></a>
-                    <th><a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
+                    <th><a href="{% url 'admin_my_tests:delete_test' user_id test_id i.id %}"
 						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
-						href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
+						href="{% url 'admin_my_tests:edit_test_temp' user_id i.id %}"
 						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
             </tbody>
             {% endfor %}

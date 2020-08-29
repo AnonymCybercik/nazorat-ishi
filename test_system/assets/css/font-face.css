@@ -1,0 +1,12 @@
+{% load static %}
+
+@font-face {
+  font-family: 'Alata-Regular';
+  src: url('{% static 'fonts/Alata-Regular.ttf' %}');
+
+}
+body{
+
+    font-family:"Alata-Regular";
+
+}

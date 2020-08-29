@@ -16,21 +16,35 @@
     <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
     <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
     <meta name="author" content="Codrops" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="{% static 'css/students.css' %}">
-    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 </head>
 
-<body style="background-color: #fff;">
-    <div class="bar p-2" style="border-bottom: 1px solid black; background-color: #3d3d3d;">
-        <span class="m-2 btn btn-secondary"><a class="text-decoration-none text-light" href="{% url 'my_tests:register' user_id %}"> O`quvchi qo`shish</a></span>
+<body>
+    <nav>
+      <div class="logo">
+Radiosoz</div>
 
-    </div>
+<input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+<ul>
+<li><a href="{% url 'admin_my_tests:home' user_id %}">Home</a></li>
+<li><a href="{% url 'admin_my_tests:search' user_id %}" class='active'>O`QUVCHILAR</a></li>
+<li><a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a></li>
+<li><a href="{% url 'admin_my_tests:register' user_id %}">O`QUVCHI QO`SHISH</a></li>
+</ul>
+</nav>
+
+
 
     <div class="m-3" style="padding-left:25%;" >
 
-        <form action="{% url 'my_tests:search' user_id %}" method="POST">
+        <form action="{% url 'admin_my_tests:search' user_id %}" method="POST">
 
             {% csrf_token %}
 
@@ -72,9 +86,9 @@
     </div>
 
 
-    <div class="adminstuds">
+    <div>
         {% if students %}
-        <table class="table  table-bordered mt-1">
+        <table class="table table-bordered mt-1">
             <tr>
                 <thead class="table-light">
                     <th>Ism</th>
@@ -86,9 +100,9 @@
                 <tbody class="text-secondary">
                     <th> {{ num.first_name }}</th>
                     <th>{{ num.last_name }} </th>
-                    <th><a href="{% url 'my_tests:delete' user_id num.id %}"
+                    <th><a href="{% url 'admin_my_tests:delete' user_id num.id %}"
                             class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
-                            href="{% url 'my_tests:edit' user_id num.id %}"
+                            href="{% url 'admin_my_tests:edit' user_id num.id %}"
                             class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
                     </tdoby>
                     {% endfor %}
@@ -97,9 +111,11 @@
         </table>
         {% else %}
 
-        <div style="margin-top:20% ;" class="text-center h1">OOPS</div>
+        <div style="margin-top:20% ;" class="text-center h1">Ro`yxat mavjud emas</div>
 
         {% endif %}
     </div>
+
+    </body>
 
     {% endblock %}

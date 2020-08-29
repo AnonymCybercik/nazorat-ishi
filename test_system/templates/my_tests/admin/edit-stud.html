@@ -8,23 +8,33 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
         <!-- CSS uchin lik -->
         <link rel="stylesheet" href="{% static 'css\register.css' %}">
-        <link rel="stylesheet" href="{% static 'css\choice.css' %}">
+        <link rel="stylesheet" href="{% static 'css\home.css' %}">
         <link rel="stylesheet" href="{% static 'css\containerw.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
     <body style="background:#fff;">
 
-    <div class="bar">
-            <span class="m-2 btn btn-primary"><i class="fa fa-user" ></i><a class="text-decoration-none text-light" href="{% url 'my_tests:search' user_id %}"> O`quvchilar</a></span>
+    <nav>
+      <div class="logo">
+Radiosoz</div>
+<input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+<li><a href="{% url 'admin_my_tests:home' user_id %}">Home</a></li>
+<li><a href="{% url 'admin_my_tests:search' user_id %}">O`QUVCHILAR</a></li>
+<li><a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a></li>
+<li><a href="{% url 'admin_my_tests:register' user_id %}">O`QUVCHI QO`SHISH</a></li>
+</ul>
+</nav>
 
-    </div>
 
-        
         <div class="m-5">
             <div class="form">
                 <form action="{% url 'my_tests:save' user_id  stud_id %}" method="POST">
@@ -42,7 +52,7 @@
                             <input value="{{ last_name }}" class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
-                        
+
                         <label class="label1" for="grade">Sinfni kiriting</label>
                         <select name="grade" id="" class="select1 order-1">
                             <option value="{{ grade }}">{{ grade }}</option>
@@ -79,14 +89,14 @@
                         <div class="form_footer">
                             <label class="label" for="school">Maktab raqamini kiriting</label>
                             <input class="input" value="{{ school }}" type="text" placeholder="School" name="school" autocomplete="off">
-                            <label class="label" for="username">Usernameni kiriting</label> 
+                            <label class="label" for="username">Usernameni kiriting</label>
                             <input class="input" value="{{ username }}" type="text" name="username" placeholder="Username">
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
                             <label class="label1" for="password">Parolni kiriting</label>
                             <input class="input" value="{{ password }}" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
-                            <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password"> 
+                            <input class="input" type="text" name="validator" value="{{ recpas }}" autocomplete="off"  placeholder="re-enter the password">
                             {% if error == 'inpass' %}
                                 <p style="color: red;">parollar bir xil emas</p>
                             {% endif %}

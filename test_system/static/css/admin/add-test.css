@@ -10,7 +10,7 @@
     padding: 30px;
     margin: 0;
     scroll-snap-type: unset;
-    
+
 }
 .containerw::after{
     top:3px;
@@ -18,7 +18,7 @@
     right: 3px;
     bottom: -320px;
     position: absolute;
-    
+
 }
 .inputs{
     display: inline-block;
@@ -26,4 +26,9 @@
 label{
     padding: 10px 0;
     color:#727272;
+}
+
+nav a {
+    text-decoration:none;
+    color:#e59500;
 }

@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{% static 'css\admin\add-test.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
 		<link rel="stylesheet" href="{% static 'css/media.css' %}">
+		<link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
     <body style="background: #eeeeee;">
@@ -23,10 +24,13 @@
 			<!-- <ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger"> -->
 
-<div class="bar">
-	<span class=" btn btn-primary"><a class="text-decoration-none text-light" href="{% url 'my_tests:choice' user_id %}">Testlar</a></span>
-</div>
+<nav>
+      <div class="logo">
+Radiosoz</div>
 
+<a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a>
+
+</nav>
 <div class="containerw next">
 
 <form  action="{% url 'my_tests:add_test' user_id test_id %}" method="POST">
