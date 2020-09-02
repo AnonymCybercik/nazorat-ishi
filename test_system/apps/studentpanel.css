@@ -3,7 +3,7 @@
     margin: 0;   
 }
 body{
-    background-color: rgb(71, 134, 113);
+    background-color:#22a185;
 }
 
 header{
@@ -13,6 +13,7 @@ header{
     padding: 40px;
     margin-left: 18%;
     margin-right: 18%;
+    background-color: #fbfdf2;
     
 }
 #variantlar{
@@ -45,8 +46,11 @@ margin-top: 15px;
 }
 .varinatlar{
     margin-right: 100px;
+  
 }
-@media screen and (min-width:px){
-    body{
-    background-color:red;
-}}
+#v1:hover ,#v2:hover,#v3:hover,#v4:hover{
+ background-color:#a4cf4c ;
+}
+#v1,#v2,#v3,#v4 {
+    margin-bottom: 7px;
+    border-radius}
