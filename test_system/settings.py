@@ -24,9 +24,9 @@ sys.path.insert(0,os.path.join(PROJECT_ROOT,'apps'))
 SECRET_KEY = '@xr@3e99$wew5*kis4ag2*3-sy74v2jf(lf^yakn+bvh-$+8$f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['anonymcybercikk28.pythonanywhere.com']
+ALLOWED_HOSTS = ['radiosoz.pythonanywhere.com']
 
 
 # Application definition

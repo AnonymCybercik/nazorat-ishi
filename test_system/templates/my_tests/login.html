@@ -33,13 +33,19 @@
                 </div>
                 <div class="form-footer">
                       <button type="submit">Sign In</button>
+
+                {% for message in messages %}
+
+                      <p style='color:red;'>{{ message }}</p>
+
+                {% endfor %}
                 </div>
          </div>
     </form>
 </section>
-<form >
 
-</form>
+
+
 </body>
 </html>
 

@@ -34,11 +34,11 @@ display: flex;
 flex-direction: column;
 margin-right: 15px;
 margin-left: 15px;
-width:70%;
+width:100%;
 margin:10px 0;
 position:absolute;
     left:50%;
-    transform:translateX(-35%);
+    transform:translateX(-30%);
 }
 input{
     height: 30px;

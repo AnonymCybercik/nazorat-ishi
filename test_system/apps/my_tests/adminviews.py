@@ -11,7 +11,7 @@ from my_tests.decorators import allowed_users,unauthenticated_user
 
 
 @login_required(login_url='/accounts/login/')
-@allowed_users(allowed_roles = ['admin1'])
+@allowed_users(allowed_roles = ['admin2'])
 def home(request,user_id):
     return render(request,"my_tests/admin/home.html",{"user_id":user_id})
 

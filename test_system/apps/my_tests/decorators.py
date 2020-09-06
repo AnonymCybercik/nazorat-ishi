@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect,reverse
+from django.shortcuts import redirect,reverse,render
 
 def unauthenticated_user(view_func):
 	def wrapper_func(request, *args, **kwargs):
@@ -20,15 +20,15 @@ def allowed_users(allowed_roles=[]):
 
 			if group in allowed_roles:
 				if group == 'student':
-				    return redirect(reverse('my_tests:user_profile',args = (request.user.id,)))
+				    return view_func(request, *args, **kwargs)
 
 				if group == 'admin':
-				    return redirect(reverse('my_tests:admin',args = (request.user.id,)))
+				    return view_func(request, *args, **kwargs)
 
-				if group == 'admin1':
-				    return redirect(reverse('admin_my_tests:home',args = (request.user.id,)))
+				if group == 'admin2':
+				    return view_func(request, *args, **kwargs)
 			else:
-				return HttpResponse('You are not authorized to view this page')
+			    return render(request,'my_tests/404.html')
 		return wrapper_func
 	return decorator
 

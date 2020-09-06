@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
+from my_tests.models import Student
+
 
 class CreateUserForm(UserCreationForm):
 
