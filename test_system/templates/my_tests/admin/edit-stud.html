@@ -2,24 +2,31 @@
 
 {% load static %}
 
-{% block title %}EDIT{% endblock %}
+{% block title %}Registration{% endblock %}
 
 {% block content %}
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\register.css' %}">
-        <link rel="stylesheet" href="{% static 'css\home.css' %}">
-        <link rel="stylesheet" href="{% static 'css\containerw.css' %}">
+        <link rel="stylesheet" href="{% static 'css/containerw.css' %}">
+        <link rel="stylesheet" href="{% static 'css/choice.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}"/>
+
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 
-    <body style="background:#fff;">
+    </head>
+    <body style="background: #fff;">
 
-    <nav>
+<nav>
       <div class="logo">
 Radiosoz</div>
 <input type="checkbox" id="click">
@@ -30,10 +37,9 @@ Radiosoz</div>
 <li><a href="{% url 'admin_my_tests:home' user_id %}">Home</a></li>
 <li><a href="{% url 'admin_my_tests:search' user_id %}">O`QUVCHILAR</a></li>
 <li><a href="{% url 'admin_my_tests:choice' user_id %}">TESTLAR</a></li>
-<li><a href="{% url 'admin_my_tests:register' user_id %}">O`QUVCHI QO`SHISH</a></li>
+<li><a href="{% url 'admin_my_tests:register' user_id %}" class='active'>O`QUVCHI QO`SHISH</a></li>
 </ul>
 </nav>
-
 
         <div class="m-5">
             <div class="form">
@@ -102,8 +108,8 @@ Radiosoz</div>
                             {% endif %}
                         </div>
                         <div>
-                        <button type="submit" class="btn mt-3 btn-primary" >Saqlash</button>
-                        <button class="btn mt-3 ml-2 btn-outline-secondary" style="font-size: 14px;" type="reset">Bekor qilish</button>
+                        <button type="submit" class="btn mt-2 btn-primary" >Saqlash</button>
+                        <button class="btn mt-2 ml-2 btn-outline-secondary" style="font-size: 14px;" type="reset">Bekor qilish</button>
                     </div>
                     </div>
                 </form>

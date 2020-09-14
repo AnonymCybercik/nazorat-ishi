@@ -19,30 +19,32 @@
 </head>
 <body>
 
-<section  class="m-text-sm login-page">
-    <form action="{% url 'my_tests:user_login' %}" method="POST">
-        {% csrf_token %}
-         <div class="box">
-                <div class="form-head">
-                      <h2>Ro'yxatdan O'tish</h2>
-                </div>
-                <div  class="form-body">
+<div class="login-box">
+        <h2>Kirish</h2>
+        <form action="{% url 'my_tests:user_login' %}" method="POST">
+            {% csrf_token %}
+            <div class="user-box">
+                <input type="text" name="username" required="">
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" required="">
+                <label>Parol</label>
+            </div>
+            {% for message in messages %}
+            <p style='color:red;'>{{message}}</p>
+        {% endfor %}
 
-                    <input class="m-text-sm" name="username" type="text" placeholder="Username" autocomplete="off" required=true><br>
-                    <input class="m-text-sm" name="password" type="password" placeholder="Password" required=true><br>
-                </div>
-                <div class="form-footer">
-                      <button type="submit">Sign In</button>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Kirish
+            </button>
+        </form>
 
-                {% for message in messages %}
-
-                      <p style='color:red;'>{{ message }}</p>
-
-                {% endfor %}
-                </div>
-         </div>
-    </form>
-</section>
+    </div>
 
 
 

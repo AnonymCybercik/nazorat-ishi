@@ -52,7 +52,40 @@ def register(request,user_id):
     }
 
     return render(request,'my_tests/register.html',context)
+def main_register(request):
+    form = CreateUserForm()
 
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            school = form.cleaned_data.get('school')
+            grade = form.cleaned_data.get('grade')
+            grade2 = form.cleaned_data.get('grade2')
+            viloyat = form.cleaned_data.get('viloyat')
+            user = form.save()
+            group = Group.objects.get(name='student')
+            user.groups.add(group)
+
+            a = Student(first_name = first_name,last_name = last_name ,username = username , password = password,school=school,grade=grade,grade2=grade2,viloyat = viloyat)
+            a.save()
+            return redirect(reverse("my_tests:user_login"))
+
+
+
+
+
+    context = {
+
+        'form':form
+
+
+    }
+
+    return render(request,'my_tests/main_register.html',context)
 
 @login_required(login_url='/accounts/login/')
 @allowed_users(allowed_roles=['admin'])
@@ -106,6 +139,8 @@ def delete(request,user_id,stud_id):
         return redirect(reverse("my_tests:search",args = (user_id,)))
 
     return redirect(reverse("my_tests:search",args = (user_id,)))
+
+
 @login_required(login_url='/accounts/login/')
 @allowed_users(allowed_roles=['admin'])
 def save(request,user_id,stud_id):
@@ -162,7 +197,7 @@ def user_login(request):
 
     a = Student.objects.all()
 
-    user = authenticate(request, username=username, password=password)
+    user = authenticate(username=username, password=password)
 
     group = None
     if request.method == "POST":
@@ -179,9 +214,7 @@ def user_login(request):
                 return redirect(reverse('my_tests:admin',args=(user.id,)))
 
             if group == 'student':
-                for i in a:
-                    if (i.username == username) and (i.password == password):
-                        return redirect(reverse("my_tests:user_profile",args=(i.id,)))
+                return redirect(reverse("my_tests:user_profile",args=(i.id,)))
 
 
         else:
@@ -362,6 +395,9 @@ def search(request,user_id):
 def edit(request,user_id,stud_id):
 
     a = Student.objects.get(id = stud_id)
+    form = CreateUserForm()
+    if request.method == 'GET':
+        form.first_name = 'salom'
 
     context = {
         "user_id":   user_id,
@@ -370,10 +406,12 @@ def edit(request,user_id,stud_id):
         "first_name":a.first_name,
         "last_name": a.last_name,
         "school":    a.school,
+        "password":  a.password,
         "grade":     a.grade,
         "grade2":    a.grade2,
         "password":  a.password,
         "viloyat":   a.viloyat,
+        "form":form,
     }
 
 

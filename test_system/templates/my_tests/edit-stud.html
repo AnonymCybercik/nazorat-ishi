@@ -11,8 +11,8 @@
 
 
         <!-- CSS uchin lik -->
-        <link rel="stylesheet" href="{% static 'css\register.css' %}">
-        <link rel="stylesheet" href="{% static 'css\containerw.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/admin/edit-stud.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/containerw.css' %}">
         <link rel="shortcut icon" href="{% static '../favicon.ico'%}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/btn.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}" />
@@ -25,7 +25,7 @@
 				<li class="gn-trigger"> -->
 <div class="wrapper">
     <div class="sidebar">
-        <h2>Radiosoz</h2>
+
         <ul>
             <li><a href="{% url 'my_tests:admin' user_id %}"><i class="fa fa-home"></i>Home</a></li>
             <li><a href="{% url 'my_tests:search' user_id %}"><i class="fa fa-user"></i>O`quvchilar</a></li>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-        <div class="">
+        <div class="m-5">
             <div class="form">
                 <form action="{% url 'my_tests:save' user_id  stud_id %}" method="POST">
                     <div class="inputs">
@@ -50,8 +50,8 @@
                                 <p style="color: red;">iltimos so`rovnomalarni to`ldiring</p>
                             {% endif %}
                             <label class="label1" for="user_name">Ism Familyani kiriting</label>
-                            <input value="{{ first_name }}" style='width:45%; display:inline;' class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
-                            <input value="{{ last_name }}" style='width:45%; display:inline;'class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
+                            <input value="{{ first_name }}" class="input" type="text" name="first_name" autocomplete="off" name="user_name" placeholder="First name">
+                            <input value="{{ last_name }}" class="input" type="text" name="last_name"  autocomplete="off" placeholder="Last name">
                         </div>
                         <div class="form_body2">
 
@@ -89,22 +89,23 @@
                         </select>
                         </div>
                         <div class="form_footer">
-                            <label class="label" for="school">Maktab raqamini va Usernameni kiriting</label><br>
-                            <input class="input" value="{{ school }}" style='width:45%; display:inline;' type="text" placeholder="School" name="school" autocomplete="off">
-                            <input class="input" value="{{ username }}" style='width:45%; display:inline;' type="text" name="username" placeholder="Username" autocomplete="off">
+                            <label class="label" for="school">Maktab raqamini kiriting</label>
+                            <input class="input" value="{{ school }}" type="text" placeholder="School" name="school" autocomplete="off">
+                            <label class="label" for="username">Usernameni kiriting</label>
+                            <input class="input" value="{{ username }}" type="text" name="username" placeholder="Username">
                             {% if error == 'inusername' %}
                                 <p style="color: red;">bu username avval qo`llangan</p>
                             {% endif %}
                             <label class="label1" for="password">Parolni kiriting</label>
-                            <input class="input" value="{{ password }}" type="text" name="password" value="{{ recpas }}"  autocomplete="off" placeholder="Enter your password">
+                            <input class="input" value="{{ password }}" type="text" name="password" value="{{ password }}"  autocomplete="off" placeholder="Enter your password">
                             <input class="input" type="text" name="validator" value="{{ password }}" autocomplete="off"  placeholder="re-enter the password">
                             {% if error == 'inpass' %}
                                 <p style="color: red;">parollar bir xil emas</p>
                             {% endif %}
                         </div>
                         <div>
-                        <button type="submit" class="btn mt-3 btn-primary" style="margin-top:12px;">Saqlash</button>
-                        <button class="btn" style="font-size: 14px; margin-top:12px; background:none;color:#717171; border:1px solid #717171;" type="reset">Bekor qilish</button>
+                        <button type="submit" class="btn mt-2 btn-primary" >Saqlash</button>
+                        <button class="btn mt-2 ml-2 btn-outline-secondary" style="font-size: 14px;" type="reset">Bekor qilish</button>
                     </div>
                     </div>
                 </form>

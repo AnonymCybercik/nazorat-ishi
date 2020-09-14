@@ -79,13 +79,9 @@ body{
     float:right;
     margin-top:-10px;
     padding:10px;
-    color:#1017A6;
-    transition:0.5s;
-}
-.wrapper .main_content a:hover{
-    border-radius:10px;
-    background:#111B6E;
     color:#fff;
+    font-size:16px;
+    transition:0.5s;
 }
 
 .wrapper .main_content .info{
