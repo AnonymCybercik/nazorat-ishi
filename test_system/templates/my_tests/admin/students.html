@@ -19,6 +19,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="{% static 'css/students.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 </head>
@@ -42,13 +43,13 @@ Radiosoz</div>
 
 
 
-    <div class="m-3" style="padding-left:25%;" >
+    <div class="m-3" style="padding-left:23%;">
 
         <form action="{% url 'admin_my_tests:search' user_id %}" method="POST">
 
             {% csrf_token %}
 
-            <select style="background: none;" name="grade">
+            <select style="background: none;" name="grade" class='m-text-sm'>
                 <option value="9">9-Sinf</option>
                 <option value="10">10-Sinf</option>
                 <option value="11">11-Sinf</option>
@@ -65,7 +66,7 @@ Radiosoz</div>
 
             <input  class="school" type="text" name="school" placeholder="school" value="" autocomplete="off">
             <select style="background: none;" class="viloyat" name="viloyat">
-                <option value="jizzax shaxar">jizzax shaxar</option>
+                <option value="Jizzax shaxar">Jizzax shaxar</option>
                 <option value="Arnasoy">Arnasoy</option>
                 <option value="Baxmal">Baxmal </option>
                 <option value="Do'stlik">Do'stlik </option>
@@ -101,9 +102,7 @@ Radiosoz</div>
                     <th> {{ num.first_name }}</th>
                     <th>{{ num.last_name }} </th>
                     <th><a href="{% url 'admin_my_tests:delete' user_id num.id %}"
-                            class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a><a
-                            href="{% url 'admin_my_tests:edit' user_id num.id %}"
-                            class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a></th>
+                            class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></th>
                     </tdoby>
                     {% endfor %}
 

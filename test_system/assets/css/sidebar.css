@@ -9,6 +9,7 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
+
 body{
    background-color: #fff;
 }
@@ -21,16 +22,21 @@ body{
 .wrapper .sidebar{
   width: 200px;
   height: 100%;
-  background: #0a122a;
+  background: #131A5E;
   padding: 30px 0px;
   position: fixed;
 }
+.wrapper .sidebar ul .active{
 
-.wrapper .sidebar h2{
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 30px;
+    background:#2432B3;
+
+}
+
+.wrapper .sidebar img{
+  align-content: center;
+  padding:10px 0px;
+  margin-left:10px;
+  margin-top:-30px;
 }
 
 .wrapper .sidebar ul li{
@@ -50,11 +56,11 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-  background-color: #0a123a;
+  background-color: #2432B3;
 }
 
 .wrapper .sidebar ul li:hover a{
-  color: #e59500;
+  color: #fff;
 }
 
 
@@ -68,6 +74,14 @@ body{
   background: #fff;
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
+}
+.wrapper .main_content a{
+    float:right;
+    margin-top:-10px;
+    padding:10px;
+    color:#fff;
+    font-size:16px;
+    transition:0.5s;
 }
 
 .wrapper .main_content .info{

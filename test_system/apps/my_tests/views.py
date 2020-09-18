@@ -214,7 +214,9 @@ def user_login(request):
                 return redirect(reverse('my_tests:admin',args=(user.id,)))
 
             if group == 'student':
-                return redirect(reverse("my_tests:user_profile",args=(i.id,)))
+                for i in a:
+                    if i.username == username and i.password == password:
+                        return redirect(reverse("my_tests:user_profile",args=(i.id,)))
 
 
         else:
