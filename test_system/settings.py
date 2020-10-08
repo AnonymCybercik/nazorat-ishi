@@ -26,7 +26,7 @@ SECRET_KEY = '@xr@3e99$wew5*kis4ag2*3-sy74v2jf(lf^yakn+bvh-$+8$f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['radiosoz.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['https://git.heroku.com/nazorat-ishi.git','127.0.0.1']
 
 
 # Application definition
