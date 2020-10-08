@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS uchin lik -->
         <link rel="stylesheet" href="{% static 'css\choice.css' %}">
+        <link rel="stylesheet" href="{% static 'css\media.css' %}">
 
     </head>
     <body>
@@ -33,15 +34,16 @@
         <div class="info">
 
 
-<div>
+<div >
 <header>9-SINF</header>
 <hr>
 <br>
 {% if verificate9 %}
-
+    <ul>
     {% for i in verificate9 %}
     <li class="li"><p class="p9" style="padding:10px 0;">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 60px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
+    </ul>
 {% endif %}
 
 <br>
@@ -51,10 +53,11 @@
 <hr>
 <br>
 {% if verificate10 %}
-
+    <ul>
     {% for i in verificate10 %}
     <li class='li'><p class="p10" style="padding:10px 0;">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 60px 4px;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
+    </ul>
 {% endif %}
 
 <br>
@@ -64,10 +67,11 @@
 <hr>
 <br>
 {% if verificate11 %}
-
+    <ul>
     {% for i in verificate11 %}
     <li class="li"><p class="p11" style="padding:10px 0;">{{ i.fanlar }}</p><a href="{% url 'my_tests:add_test' user_id i.id %}"><i class="fa fa-plus-circle" style="font-size: 16px; margin: 60px 4px; padding:0;"> Qo`shish</i></a> <a href="{% url 'my_tests:edit_test' user_id i.id %}"><i class="fa fa-pencil" style="font-size: 16px; margin:45px 4px;"> Tahrirlash</i></a></li>
     {% endfor %}
+    </ul>
 {% endif %}
 </div>
 </div>

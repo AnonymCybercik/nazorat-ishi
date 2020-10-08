@@ -35,14 +35,14 @@ class CreateUserForm(UserCreationForm):
         ("D","D"),
         )
 
-    username =      forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','style':"width: 45%; display:inline-block;",'autocomplete': 'off'}))
-    first_name =    forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','autocomplete': 'off','style':"width: 45%; display:inline-block;"}))
-    last_name =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','autocomplete': 'off','style':"width: 45%; display:inline-block;"}))
-    viloyat =       forms.ChoiceField(required = True,widget=forms.Select(attrs={'class': 'select3'}),choices = viloyatlar)
-    grade =         forms.ChoiceField(required = True,choices = grade1,widget=forms.Select(attrs={'class': 'select1','style':"width: 45%; display:inline-block;"}))
-    grade2 =        forms.ChoiceField(required = True,choices = grade2,widget=forms.Select(attrs={'class': 'select2','style':"width: 45%; display:inline-block;"}))
-    school =        forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','style':"width: 45%; display:inline-block;",'autocomplete': 'off',}))
-    password1 =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','type':'password',}))
-    password2 =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'input','type':'password',}))
+    username =      forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input','autocomplete': 'off','placeholder':'Username'}))
+    first_name =    forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input','autocomplete': 'off','style':"width: 50%; display:inline-block;",'placeholder':'Ism'}))
+    last_name =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input','autocomplete': 'off','style':"width: 49%; display:inline-block;",'placeholder':'Familya'}))
+    viloyat =       forms.ChoiceField(required = True,widget=forms.Select(attrs={'class': 'form-input'}),choices = viloyatlar)
+    grade =         forms.ChoiceField(required = True,choices = grade1,widget=forms.Select(attrs={'class': 'form-input student','style':"width: 50%;",'id':"requirment3"}))
+    grade2 =        forms.ChoiceField(required = True,choices = grade2,widget=forms.Select(attrs={'class': 'form-input student','style':"width: 49%;",'id':"requirment2"}))
+    school =        forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input student','autocomplete': 'off','placeholder':'Maktab raqami','id':"requirment"}))
+    password1 =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input','type':'password','placeholder':'Foydalanuvchi Paroli'}))
+    password2 =     forms.CharField(required = True,max_length = 75,widget=forms.TextInput(attrs={'class': 'form-input','type':'password','placeholder':'Parolni qayta kiriting'}))
 
 

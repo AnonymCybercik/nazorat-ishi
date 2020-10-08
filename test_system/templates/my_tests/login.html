@@ -15,38 +15,53 @@
 
     <link rel="stylesheet" type="text/css" href="{%  static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{%  static 'css/media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{%  static 'css/css/bootstrap.css' %}">
     <title>{% block title %}Tizimga kirish{% endblock %}</title>
 </head>
 <body>
 
-<div class="login-box">
-        <h2>Kirish</h2>
-        <form action="{% url 'my_tests:user_login' %}" method="POST">
-            {% csrf_token %}
-            <div class="user-box">
-                <input type="text" name="username" required="">
-                <label>Username</label>
-            </div>
-            <div class="user-box">
-                <input type="password" name="password" required="">
-                <label>Parol</label>
-            </div>
-            {% for message in messages %}
-            <p style='color:red;'>{{message}}</p>
-        {% endfor %}
+    <div class='bar'>
 
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Kirish
-            </button>
-        </form>
-        <p style='top: 90%;'>Hisob ochmaganmisiz? <a href={% url 'my_tests:main_register' %}>hisob ochish</a></p>
+        <a href='/'>Bosh sahifa</a>
+
+
     </div>
 
+    <div class="main">
 
+        <section class="signup">
+            <div class="container" style='width:660px;'>
+                <div class="signup-content">
+                    <form action="{% url 'my_tests:user_login' %}" method="POST" id="signup-form" class="signup-form">
+                        {% csrf_token %}
+                        <h2 class="form-title">Kirish</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="username" id="name" placeholder="Username" autocomplete="off" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off" />
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+
+                        {% for message in messages %}
+                            <div class='pb-3' style='color:red;'>{{message}}</div>
+                        {% endfor %}
+
+
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Avval hisob ochmaganmisiz? <a href="{% url 'my_tests:main_register' %}" class="loginhere-link"> Hisob ochish</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 </body>
 </html>

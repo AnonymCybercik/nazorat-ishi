@@ -2,17 +2,585 @@
 
 {% load static %}
 
-{% block title %}Admin panelga xush kelibsiz!{% endblock %}
+{% block title %}NazoratIshi.uz - o'zingizni sinab ko'ring{% endblock %}
 
 {% block content %}
 
-<!-- CSS uchin lik -->
-<link rel="stylesheet" type="text/css" href="{%  static 'css\home.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  </head>
+  <body>
+	  <div class="bg-top navbar-light">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-center align-items-stretch">
+    			<div class="col-md-4 d-flex align-items-center py-4">
+    				<a class="navbar-brand" href="index.html">Nazorat <span>Ishi</span></a>
+    			</div>
+	    		<div class="col-lg-8 d-block">
+		    		<div class="row d-flex">
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><i class=' fas fa-paper-plane'></i></div>
+					    	<div class="text">
+					    		<span>Email</span>
+						    	<span>aloqa@nazoratishi.uz</span>
+						    </div>
+					    </div>
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><i class=' fa fa-phone'></i></div>
+						    <div class="text">
+						    	<span>Telefon</span>
+						    	<span>+998 99 059-14-01</span>
+						    </div>
+					    </div>
+					    {% if not user.id == None %}
+					        {% if student %}
+        					    <div class="col-md topper d-flex align-items-center justify-content-end">
+        					    	<p class="mb-0">
+        					    		<a href="{% url 'my_tests:user_profile' user.id %}" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+        					    			<span id = 'authed'>Profil</span>
+        					    		</a>
+        					    	</p>
+        					    </div>
+    					    {% endif %}
+
+    					    {% if admin %}
+    					    <div class="col-md topper d-flex align-items-center justify-content-end">
+        					    	<p class="mb-0">
+        					    		<a href="{% url 'my_tests:admin' user.id %}" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+        					    			<span id = 'authed'>Profil</span>
+        					    		</a>
+        					    	</p>
+        					    </div>
+    					    {% endif %}
+
+    					    {% if admin2 %}
+    					        <div class="col-md topper d-flex align-items-center justify-content-end">
+        					    	<p class="mb-0">
+        					    		<a href="{% url 'admin_my_tests:home' user.id %}" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+        					    			<span id = 'authed'>Profil</span>
+        					    		</a>
+        					    	</p>
+        					    </div>
+
+    					    {% endif %}
+					    {% else %}
+					    <div class="col-md topper d-flex align-items-center justify-content-end ml-5">
+					    	<p class="mb-0">
+					    		<a href="{% url 'my_tests:user_login' %}" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+					    			<span id = 'authed'>Kirish</span>
+					    		</a>
+					    	</p>
+					    </div>
+					    <div class="col-md topper d-flex align-items-center justify-content-end">
+					    	<p class="mb-0">
+					    		<a href="{% url 'my_tests:main_register' %}" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center">
+					    			<span id = 'authed'>Hisob ochish</span>
+					    		</a>
+					    	</p>
+					    </div>
+					    {% endif %}
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center px-4">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menyu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active"><a href="index.html" class="nav-link pl-0">Bosh sahifa</a></li>
+	        	<li class="nav-item"><a href="about.html" class="nav-link">Sayt haqida</a></li>
+	        	{% if not user.id == None %}
+	        	    <li class="nav-item"><a href="{% url 'my_tests:tests' user.id %}" class="nav-link">Testlar</a></li>
+	        	{% else %}
+	        	<li class="nav-item"><a href="{% url 'my_tests:user_login' %}" class="nav-link">Testlar</a></li>
+	        	{% endif %}
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Aloqa</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image:url({% static 'img/bg_1.jpg'%});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">O'zingizni sinab ko'ring</h1>
+            <p>Olgan bilimlaringizni sinab ko'rish vaqti keldi.</p>
+            {% if not user.id == None %}
+	        	    <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary px-4 py-3 mt-3">Testlar</a></p>
+	        	{% else %}
+	        	    <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary px-4 py-3 mt-3">Testlar</a></p>
+	        	{% endif %}
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image:url({% static 'img/bg_2.jpg'%});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">Imtihonlarga tayyormisiz?</h1>
+            <p>Kirish imtihonlari yaqin, siz imtihonlarga tayyormisiz?</p>
+            {% if not user.id == None %}
+	        	    <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary px-4 py-3 mt-3">Testlar</a></p>
+	        	{% else %}
+	        	    <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary px-4 py-3 mt-3">Testlar</a></p>
+	        	{% endif %}
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-services ftco-no-pb">
+			<div class="container-wrap">
+				<div class="row no-gutters">
+          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary">
+            <div class="media block-6 d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span style='color:white; font-size:40px;' class="fas fa-chalkboard-teacher"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Sifatli testlar</h3>
+                <p>Barcha testlar malakali pedagoglar tomonidan tuzilgan.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-darken">
+            <div class="media block-6 d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<i style='color:white; font-size:40px;' class="fas fa-book-reader"></i>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Bepul</h3>
+                <p>Barcha testlarimiz bepul va hech qanday reklamalarsiz.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary">
+            <div class="media block-6 d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span style='color:white; font-size:40px;' class="fas fa-book"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Qulay interfeys</h3>
+                <p>Platforma juda qulay tuzilgan bo'lib, har qanday hajmdagi qurilmaga moslashuvchan.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-darken">
+            <div class="media block-6 d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<i style='color:white; font-size:40px;' class="fas fa-chart-pie"></i>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Statistika</h3>
+                <p>Erishgan natijalaringizni statistika orqali kuzatib borishingiz mumkin.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static 'img/bg_3.jpg'%});" data-stellar-background-ratio="0.5">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-2 d-flex">
+    			<div class="col-md-6 align-items-stretch d-flex">
+    				<div class="img img-video d-flex align-items-center" style="background-image: url({% static 'img/about-2.jpg'%});">
+    					<div class="video justify-content-center">
+								<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+									<span class="ion-ios-play"></span>
+		  					</a>
+							</div>
+    				</div>
+    			</div>
+          <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+            <h2 class="mb-4">Nazoratishi.uz</h2>
+            <p>Bizning sayt hech qanday foydani ko‘zlamagan holda, o‘quvchilarning bilimlarini tekshirish uchun yaratilgan. Barcha testlarimiz malakali pedagoglar tomonidan tuzilgan.</p>
+            <p>Ushbu videoda platformamiz haqida to'liqroq ma'lumot olishingiz mumkin.</p>
+          </div>
+        </div>
+    		<div class="row d-md-flex align-items-center justify-content-center">
+    			<div class="col-lg-12">
+    				<div class="row d-md-flex align-items-center">
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		            	<div class="icon"><span class="flaticon-doctor"></span></div>
+		              <div class="text">
+		                <strong class="number" data-number="{{students}}">0</strong>
+		                <span>O'quvchilar</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		            	<div class="icon"><span class="flaticon-doctor"></span></div>
+		              <div class="text">
+		                <strong class="number" data-number="{{fanlar}}">0</strong>
+		                <span>Fanlar</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		            	<div class="icon"><span class="flaticon-doctor"></span></div>
+		              <div class="text">
+		                <strong class="number" data-number="{{testlar}}">0</strong>
+		                <span>Testlar</span>
+		              </div>
+		            </div>
+		          </div>
+	          </div>
+          </div>
+        </div>
+    	</div>
+    </section>
 
 
-<a href="{% url 'my_tests:user_login' %}">login</a>
+		<section class="ftco-section">
+			<div class="container-fluid px-4">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4"><span>Asosiy</span> Fanlar</h2>
+            <p>Statistika asosida saralangan eng asosiy va ko'p o'qiladigan fanlar ro'yxati</p>
+          </div>
+        </div>
+				<div class="row">
+					<div class="col-md-3 course ftco-animate">
+						<div class="img" style="background-image: url({% static 'img/english.jpg'%});"></div>
+						<div class="text pt-4">
+
+							<h3><a href="#">Ingliz tili</a></h3>
+							{% if not user.id == None %}
+	        	             <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary">Testlar</a></p>
+	        	        {% else %}
+	        	             <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary">Testlar</a></p>
+	        	            {% endif %}
+						</div>
+					</div>
+					<div class="col-md-3 course ftco-animate">
+						<div class="img" style="background-image: url({% static 'img/math.jpg'%});"></div>
+						<div class="text pt-4">
+							<h3><a href="#">Matematika</h3>
+							{% if not user.id == None %}
+	        	    <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary">Testlar</a></p>
+	        	{% else %}
+	        	    <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary">Testlar</a></p>
+	        	{% endif %}
+						</div>
+					</div>
+					<div class="col-md-3 course ftco-animate">
+						<div class="img" style="background-image: url({% static 'img/physics.jpg'%});"></div>
+						<div class="text pt-4">
+							<h3><a href="#">Fizika</a></h3>
+							{% if not user.id == None %}
+	        	    <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary ">Testlar</a></p>
+	        	{% else %}
+	        	    <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary">Testlar</a></p>
+	        	{% endif %}
+						</div>
+					</div>
+					<div class="col-md-3 course ftco-animate">
+						<div class="img" style="background-image: url({% static 'img/biology.jpg'%});"></div>
+						<div class="text pt-4">
+							<h3><a href="#">Biologiya</a></h3>
+							{% if not user.id == None %}
+	        	    <p><a href="{% url 'my_tests:tests' user.id %}" class="btn btn-primary ">Testlar</a></p>
+	        	{% else %}
+	        	    <p><a href="{% url 'my_tests:user_login' %}" class="btn btn-primary ">Testlar</a></p>
+	        	{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section bg-light">
+			<div class="container-fluid px-4">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Konstruktorlar</h2>
+            <p>Platformamiz uchun sayt tuzishda yordam bergan barcha o'qituvchilar</p>
+          </div>
+        </div>
+				<div class="row">
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url({% static 'img/teacher-1.jpg'%});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3>Qulpinisa Mamarayimova</h3>
+								<span class="position mb-2">Matematika</span>
+								<div class="faded">
+									<p>Malakali matematika o'qituvchisi</p>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url({% static 'img/teacher-2.jpg'%});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3>Qumri Abduraimova</h3>
+								<span class="position mb-2">Ingliz tili</span>
+								<div class="faded">
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url({% static 'img/teacher-3.jpg'%});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3>Lutpinisa Raimqulova</h3>
+								<span class="position mb-2">Ona-tili</span>
+								<div class="faded">
+									<p>Oliy tofali ona-tili o'qituvchisi</p>
+
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url({% static 'img/informatika.jpg'%});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3>Mamaraim haker</h3>
+								<span class="position mb-2">Informatika</span>
+								<div class="faded">
+									<p>Qishlog'imizning malakali kompyuterchilaridan biri</p>
+
+	              </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 
+    <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" style="background-image: url({% static 'img/bg_5.jpg'%});" data-stellar-background-ratio="0.5">
+    	<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row justify-content-end">
+    			<div class="col-md-6 py-5 px-md-5">
+    				<div class="py-md-5">
+		          <div class="heading-section heading-section-white ftco-animate mb-5">
+		            <h2 class="mb-4">Ro'yxatdan o'tish</h2>
+		            <p>Hali ham ro'yxatdan o'tmadingizmi? Hoziroq buni qilishingiz mumkin.</p>
+		          </div>
+
+			              <input type="submit" value="Ro'yxatdan o'tish" class="btn btn-primary py-3 px-4">
+			            </div>
+		    			</div>
+		    		</div>
+    			</div>
+    </section>
+
+	<section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">O'quvchilarning biz haqimizdagi fikrlari</h2>
+            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+          </div>
+        </div>
+        <div class="row ftco-animate justify-content-center">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img mr-4" style="background-image: url({% static 'img/teacher-1.jpg'%})">
+                  </div>
+                  <div class="text ml-2">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Racky Henderson</p>
+                    <span class="position">Father</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img mr-4" style="background-image: url({% static 'img/teacher-2.jpg)'%}">
+                  </div>
+                  <div class="text ml-2">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Henry Dee</p>
+                    <span class="position">Mother</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img mr-4" style="background-image: url({% static 'img/teacher-3.jpg'%})">
+                  </div>
+                  <div class="text ml-2">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Mark Huff</p>
+                    <span class="position">Mother</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img mr-4" style="background-image: url({% static 'img/teacher-4.jpg'%})">
+                  </div>
+                  <div class="text ml-2">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Rodel Golez</p>
+                    <span class="position">Mother</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img mr-4" style="background-image: url({% static 'img/teacher-1.jpg'%})">
+                  </div>
+                  <div class="text ml-2">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Ken Bosh</p>
+                    <span class="position">Mother</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">Savollar tug'ildimi?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="fas fa-map-marker"></span><span class="text"> Jizzax sh. Paxtakor mahalla Mirzo Ulug'bek k. 33</span></li>
+	                <li><a href="#"><span class="fas fa-phone"></span><span class="text"> +998 90 059-14-01</span></a></li>
+	                <li><a href="#"><span class="fas fa-paper-plane"></span><span class="text"> aloqa@nazoratishi.uz</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">Yangiliklarga a'zo bo'ling</h2>
+              <form action="#" class="subscribe-form">
+                <div class="form-group">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Email manzil">
+                  <input type="submit" value="A'zo bo'lish" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2 mb-0">Bizni kuzatib boring</h2>
+            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><i style='font-size:40px;' class="fab fa-telegram"></i></a></li>
+                <li class="ftco-animate"><a href="#"><i style='font-size:40px;' class="fab fa-facebook"></i></a></li>
+                <li class="ftco-animate"><a href="#"><i style='font-size:45px;' class="fab fa-instagram"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>Barcha huquqlar himoyalangan. Testlarni tarqatish taqiqlanadi.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+    <script>
+        text = document.getElementById('authed').innerHTML
+
+        if (text == "Profil"){
+
+            alert("Siz muvoffaqiyatli ro'yhatdan o'tgansiz Profilingizga kirish uchun menudan profil tugmasini bosing")
+
+        }
+
+    </script>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main2.js' %}"></script>
+  <script src="{% static 'js/all.js' %}"></script>
+
+  </body>
+</html>
 
 
 

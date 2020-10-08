@@ -17,14 +17,15 @@
     <a class="m-2 btn btn-secondary" href="{% url 'my_tests:user_profile' student_id %}">PROFIL</a>
 </div>
 
-<div class="justify-content-center ">
+<div >
     <header>9-SINF</header>
     <hr>
     {% if verificate9 %}
-
+        <ul>
         {% for i in verificate9 %}
         <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p9">{{ i.fanlar }}</p></li></a>
         {% endfor %}
+        </ul>
     {% endif %}
     <br>
     <hr>
@@ -32,10 +33,11 @@
     <hr>
 
     {% if verificate10 %}
-
+        <ul>
         {% for i in verificate10 %}
         <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p10">{{ i.fanlar }}</p></li></a>
         {% endfor %}
+        </ul>
     {% endif %}
 
     <br>
@@ -43,10 +45,11 @@
     <header>11-SINF</header>
     <hr>
     {% if verificate11 %}
-
+        <ul>
         {% for i in verificate11 %}
         <a href="{% url 'my_tests:test' student_id i.id %}"><li class="li"><p class="p11">{{ i.fanlar }}</p></li></a>
         {% endfor %}
+        </ul>
     {% endif %}
 </div>
 

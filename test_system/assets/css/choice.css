@@ -76,14 +76,14 @@ header{
     font-size: 26px;
     padding: 2px;
     color:white ;
-    background-color: rgb(236, 51, 51);
+    background-color: #131A5E;
 }
 .p10{
     margin-top: 0px;
     font-size: 26px;
     padding: 2px;
     color:white ;
-    background-color: rgb(46, 228, 46);
+    background-color: #131A5E;
 }
 
 .p11{
@@ -91,5 +91,5 @@ header{
     font-size: 26px;
     padding: 2px;
     color: white;
-    background-color: rgb(51, 122, 236);
+    background-color: #131A5E;
 }

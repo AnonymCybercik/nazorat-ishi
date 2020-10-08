@@ -42,7 +42,7 @@
         </div>
         <div class="info">
 
-        <form class="form1" action="{% url 'my_tests:search' user_id %}" method="POST">
+        <form class="form1" action="{% url 'my_tests:search' user_id %}" method="GET">
 
             {% csrf_token %}
 

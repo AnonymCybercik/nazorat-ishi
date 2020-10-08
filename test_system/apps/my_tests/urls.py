@@ -8,7 +8,8 @@ from . import views
 app_name = 'my_tests'
 
 urlpatterns = [
-    path('',views.main_register,name = 'main_register'),
+    path('',views.home,name = 'home'),
+    path('register/',views.main_register,name = 'main_register'),
     path('accounts/login/',views.user_login,name = 'user_login'),
     path("<int:user_id>/o'quvchilar",views.search,name = 'search'),
     path('<int:user_id>/admin',views.admin,name = 'admin'),

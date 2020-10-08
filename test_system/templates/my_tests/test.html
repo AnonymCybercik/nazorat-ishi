@@ -2,42 +2,231 @@
 
 {% load static %}
 
+<html>
 
-{% block title %}JVXTV test sistemasi{% endblock %}
+    <head>
 
-{% block content %}
 
-<!-- CSS uchin lik -->
+          {% block title %}{% endblock %}
+        {% block content %}
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'css/Main.css' %}" rel="stylesheet"/>
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+          <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<style>
+.button {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(145, 92, 182);
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
 
-<link rel="stylesheet" href="{% static 'css\media.css' %}">
+.glow-button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
 
-<span id="time" >01:00</span>
+</style>
+        <script src="{% static 'js/script3.js'%}"></script>
+              <script  src="{% static 'js/script.js'%}"></script>
+        <script src="{% static 'js/jquery-1.10.2.min.js'%}"></script>
 
-    {% if testlar %}
-    
 
-        <form action="{% url 'my_tests:test' student_id test_id %}" method="POST">
-            {% for a in testlar %}
-                {% csrf_token %}
-                {{ a.question }}<br>
-                <input type="radio" name="{{a.question}}" value="A"> {{ a.A }}<br>
-                <input type="radio" name="{{a.question}}" value="B"> {{ a.B }}<br>
-                <input type="radio" name="{{a.question}}" value="C"> {{ a.C }}<br>
-                <input type="radio" name="{{a.question}}" value="D"> {{ a.D }}<br>
 
-            {% endfor %}
-            <button id="btn" type="submit">testni tugatish</button>
-        </form>
-    
-    {% else %}
+        </style>
+                <script LANGUAGE="Javascript">
+                <!--Start Javacrap here--
+                q1=0;
+                q2=0;
+                q3=0;
+                function Scoring(){
+                score = q1 + q2 + q3;
+                if(score<90){
+                alert("Sorry! Try again! ^_^")
+                }
+                else {
+                location = "redirect-to-congrats-page.html";}
+                }
+                function clear(){
+                q1 = 0;
+                q2 = 0;
+                q3 = 0;
+                }
+                //--End o' Javastuff-->
+                   </script><script language="JavaScript1.2">
+                if (window.Event)
+                document.captureEvents(Event.MOUSEUP);
+                function nocontextmenu()
+                {
+                event.cancelBubble = true
+                event.returnValue = false;
+                return false;
+                }
+                function norightclick(e)
+                {
+                if (window.Event)
+                {
+                if (e.which == 2 || e.which == 3)
+                return false;
+                }
+                else
+                if (event.button == 2 || event.button == 3)
+                {
+                event.cancelBubble = true
+                event.returnValue = false;
+                return false;
+                }
+                }
+                document.oncontextmenu = nocontextmenu;
+                document.onmousedown = norightclick;
+                   </script>
+                <script language="JavaScript"> <!--
+                var message="No Right Click."; // Message for the alert box
+                function click(e) {
+                if (document.all) {
+                if (event.button == 2) {
+                alert(message);
+                return false;
+                }
+                }
+                if (document.layers) {
+                if (e.which == 3) {
+                alert(message);
+                return false;
+                }
+                }
+                }
+                if (document.layers) {
+                document.captureEvents(Event.MOUSEDOWN);
+                }
+                document.onmousedown=click;
+                // --> </script>
+                <script>
+                document.onkeydown = function ()
+                {
+                 if (122 == event.keyCode)
+                 {
+                  event.keyCode = 0;
+                  return = false;
+                 }
+                }
+                </script>
 
-    <h1>test mavjud emas</h1>
+            <style>
+          #ten-countdown{
+            /* text-align: center; */
+           text-align:center;
+            border: 5px solid #004853;
+            display:inline;
+            padding: 5px;
+            color: #004853;
+            font-family: Verdana, sans-serif, Arial;
+            font-size: 40px;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-    
+        #sunil {
+          padding: 20px;
+          text-align: center;
+        }
+            </style>
 
-{% endif %}
-<script src="{% static 'js/main.js' %}"></script>
+
+    </head>
+
+    <body>
+
+      <section><div id="layer">
+             <div id="msg">
+
+                 <div id="zero">
+
+                 </div>
+             </div>
+
+      </div>
+    </section>
+
+
+
+     <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+
+
+          <div class="main">
+
+              <section class="signup">
+
+                  <div class="container">
+
+                      <div class="signup-content">
+
+
+                              <h2 class="form-title">--*-{{ test_name.fanlar }}-*--</h2>
+                              <body id="sunil">
+                                <div id="ten-countdown"></div>
+                                <script  src="{% static 'js/script2.js'%}"></script>
+                              </body>
+
+
+                              <center><form NAME="FormI" action="{% url 'my_tests:test' student_id test_id %}" method="POST"></center>
+
+                              <table style="text-align:left;">
+                            <ol>
+                            {% for a in testlar %}
+                                 {% csrf_token %}
+                              <tr><td><li type='1'>{{ a.question }}</li></td></tr>
+                              <tr>
+                              <td><input type="radio" name="{{a.question}}" id="{{a.A}}" value="A"> <label for="{{a.A}}">{{ a.A }}</label>
+                              <br><input type="radio" name="{{a.question}}" id="{{a.B}}" value="B"> <label for="{{a.B}}">{{ a.B }}</label>
+                              <br><input type="radio" name="{{a.question}}" id="{{a.C}}" value="C"> <label for="{{a.C}}">{{ a.C }}</label>
+                              <br><input type="radio" name="{{a.question}}" id="{{a.D}}" value="D"> <label for="{{a.D}}">{{ a.D }}</label>
+
+
+
+                              </tr>
+                            {% endfor %}
+</ol>
+                              </table>
+
+                              <button type='submit' id='click' class="button glow-button">submit</button>
+
+                              </form>
+
+
+                              <!-------------------->
+
+                              <!-------------->
+
+
+
+
+
+                      </div>
+                  </div>
+              </section>
+
+
+    </body>
+<script src="{% static 'js/moving.js'%}"></script>
 
 
 
 {% endblock %}
+
+
+
+
+
+
+
+</html>

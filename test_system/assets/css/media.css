@@ -1,5 +1,4 @@
 @media only screen and (max-width: 600px) {
-   {
         .user-info{
             padding: 0 15%;
             background: ;
@@ -26,6 +25,9 @@
             left: 50%;
             transform: translateX(-50%);
 
+        }
+        .pad-zero{
+            padding:0;
         }
         .m-input-md{
             width: 60%;

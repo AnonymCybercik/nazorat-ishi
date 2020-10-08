@@ -7,6 +7,7 @@ class Student(models.Model):
     grade = models.CharField(max_length=20,null=True)
     grade2 = models.CharField(max_length=20,null=True)
     username = models.CharField(max_length=20,null=True)
+    is_student = models.BooleanField(null=True)
     first_name = models.CharField(max_length=20,null=True)
     last_name = models.CharField(max_length=20,null=True)
     password = models.CharField(max_length=20,null=True)
@@ -38,6 +39,7 @@ class Test(models.Model):
     C = models.CharField(max_length=60,null=True)
     D = models.CharField(max_length=60,null=True)
     answer = models.CharField(max_length=60,null=True)
+    number = models.CharField(max_length = 2,null = True)
 
 class AdditionalAdmin(models.Model):
     username = models.CharField(max_length = 20,null = True)
