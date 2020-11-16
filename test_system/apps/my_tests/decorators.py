@@ -28,7 +28,7 @@ def allowed_users(allowed_roles=[]):
 				if group == 'admin2':
 				    return view_func(request, *args, **kwargs)
 			else:
-			    return HttpResponse('qiya')
+			    return HttpResponse('siz bu sahifa uchun ro`yxatdan o`tmagansiz')
 		return wrapper_func
 	return decorator
 

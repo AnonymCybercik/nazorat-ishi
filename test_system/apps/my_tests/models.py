@@ -29,6 +29,8 @@ class Sinflarfanlar(models.Model):
         ('Informatika','Informatika'),
         ('Ingliz tili','Ingliz tili'),
         ('Geometriya','Geometriya'),
+        ('Huquq','Huquq'),
+        ('Tarix','Tarix'),
     ],null = True)
 
 class Test(models.Model):
