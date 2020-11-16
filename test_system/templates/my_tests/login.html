@@ -18,14 +18,10 @@
     <link rel="stylesheet" type="text/css" href="{%  static 'css/css/bootstrap.css' %}">
     <title>{% block title %}Tizimga kirish{% endblock %}</title>
 </head>
-<body>
+<body class="p-0">
 
-    <div class='bar'>
+        <a href='/' class="btn btn-success m-2">Bosh sahifa</a>
 
-        <a href='/'>Bosh sahifa</a>
-
-
-    </div>
 
     <div class="main">
 
@@ -41,7 +37,7 @@
 
 
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off" />
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password" autocomplete="off" />
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                         </div>
 

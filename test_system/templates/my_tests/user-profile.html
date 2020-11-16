@@ -31,10 +31,12 @@
             <p class="">Familya: {{student.last_name}}</p>
             <p class="">Username: {{student.username}}</p>
             <p class="">Password: {{student.password}}</p>
-            <p class="">Maktab raqami: {{student.school}}</p>
-            <p class="">Viloyat: {{student.viloyat}}</p>
-            <p class="">Sinf: {{student.grade}}-{{student.grade2}}</p>
 
+            <p class="">Viloyat: {{student.viloyat}}</p>
+            {% if is_student %}
+            <p class="">Maktab raqami: {{student.school}}</p>
+            <p class="">Sinf: {{student.grade}}-{{student.grade2}}</p>
+            {% endif %}
         </div>
 
 
