@@ -47,10 +47,8 @@
             {% for i in test %}
             <tbody >
 
-                    <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" class="text-decoration-none text-secondary">{{i.question}}</th></a>
+                    <th class="p-3"><a href="{% url 'my_tests:edit_test_temp' user_id i.id %}" style="color:black!important; float: left;" class="float-righttext-decoration-none text-secondary">{{i.question}}</th></a>
                     <th>
-						<a href="{% url 'my_tests:edit_test_temp' user_id i.id %}"
-						class="m-1 float-right btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
 						<a href="{% url 'my_tests:delete_test' user_id test_id i.id %}"
 						class="m-1 float-right btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 						</th>
@@ -60,7 +58,7 @@
 		</table>
 		{% else %}
 
-        <div style="margin-top:20% ;" class="text-center h1">OOPS</div>
+        <div style="margin-top:20% ; margin-left: 50%;" class="text-center h1">OOPS</div>
         {% endif %}
     </div>
 

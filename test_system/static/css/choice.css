@@ -3,9 +3,10 @@ body{
     margin: 0;
 }
 
-a{
-    color:black;
+ul .li a{
+    color:black!important;
     text-decoration: none;
+    margin-top: 9vh!important;
 }
 
 .menu{
@@ -68,7 +69,6 @@ header{
 .li:hover{
     box-shadow: 6px 6px 5px -5px #000;
     transform: scale(1.05);
-
 }
 
 .p9{
