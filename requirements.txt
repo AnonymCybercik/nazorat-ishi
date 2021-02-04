@@ -1,23 +1,17 @@
 apturl==0.5.2
 bcrypt==3.1.7
 blinker==1.4
-<<<<<<< HEAD:requirments.txt
-=======
 Brlapi==0.7.0
 ccsm==0.9.14.1
->>>>>>> 4d554a44427488afba519d231357fdac9bfbed43:requirements.txt
 certifi==2019.11.28
 chardet==3.0.4
 chrome-gnome-shell==0.0.0
 cliapp==1.20180812.1
 Click==7.0
-<<<<<<< HEAD:requirments.txt
-=======
 cmdtest==0.32+git
 colorama==0.4.3
 command-not-found==0.3
 compizconfig-python==0.9.14.1
->>>>>>> 4d554a44427488afba519d231357fdac9bfbed43:requirements.txt
 cryptography==2.8
 cupshelpers==1.0
 DateTime==4.3
