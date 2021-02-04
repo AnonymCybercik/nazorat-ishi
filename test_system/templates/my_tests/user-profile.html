@@ -170,7 +170,7 @@ sistemasi{% endblock %} {% block content %}
         >Sign Out</a
       >
     </div>
-    <div class="page-content page-container" id="page-content">
+    <div class="page-content page-container " id="page-content">
       <div class="padding">
         <div class="row container d-flex justify-content-center">
           <div class="col-xl-6 col-md-12">
@@ -210,11 +210,19 @@ sistemasi{% endblock %} {% block content %}
                             style="border: 0; width: 70%"
                             value="{{student.password}}"
                           />
-                          <i
+                          <img
+                          style="display: none;"
+                           src="{% static 'eye-regular.svg' %}"
                             toggle="#password-field"
                             class="fa fa-fw fa-eye eye-p"
-                          ></i>
-                          <i class="fas fa-frown	"></i>
+                          />
+                          <img
+                          style="display: inline;width: 1.28571429em;"
+                           src="{% static 'eye-slash-solid.svg' %}"
+                            toggle="#password-field"
+                            class="eye-slash"
+                          />
+                         
                         </h6>
                       </div>
                     </div>
@@ -261,17 +269,24 @@ sistemasi{% endblock %} {% block content %}
 
     <script>
       const i = document.querySelector(".eye-p");
+      const slash=document.querySelector(".eye-slash");
       const input = document.querySelector(".input");
       i.addEventListener("click", changeEye);
+      slash.addEventListener("click", changeEye2);
 
       function changeEye() {
-        if (i.className == "fa fa-fw fa-eye  eye-p") {
-          i.className = "fas fa-fw fa-slash  eye-p";
+        if (i.style.display=="inline") {
+          i.style.display = "none";
           input.type = "password";
-        } else {
-          i.className = "fa fa-fw fa-eye  eye-p";
+          slash.style.display='inline'
+        } 
+      }
+      function changeEye2() {
+        if (slash.style.display=="inline") {
+          i.style.display = "inline";
           input.type = "text";
-        }
+          slash.style.display='none'
+        } 
       }
     </script>
   </body>
