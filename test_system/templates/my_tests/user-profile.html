@@ -113,7 +113,7 @@ sistemasi{% endblock %} {% block content %}
       }
 
       .text-muted {
-        color: #919aa3 !important;
+        color: #000 !important;
       }
 
       .b-b-default {
@@ -154,29 +154,35 @@ sistemasi{% endblock %} {% block content %}
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
       }
+      .student-name{
+        font-size: 1.3rem;
+      }
+      .card-all{
+        margin-top: 30px;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
     <div class="menu">
       <a
-        class="btn btn-sml btn-secondary"
+        class="btn btn-sml btn-warning"
         href="{% url 'my_tests:student_choice' stud_id %}"
         >TEST ISHLASH</a
       >
       <a
-        class="btn btn-sml btn-secondary float-right"
+        class="btn btn-sml btn-danger float-right"
         href="{% url 'my_tests:user_logout' student.id %}"
         >Sign Out</a
       >
     </div>
-    <div class="page-content page-container " id="page-content">
+    <div class="page-content  page-container " id="page-content">
       <div class="padding">
-        <div class="row container d-flex justify-content-center">
-          <div class="col-xl-6 col-md-12">
+        <div class="row container d-flex justify-content-center card-all">
+          <div  class="col-xl-7 col-md-12">
             <div class="card user-card-full">
               <div class="row m-l-0 m-r-0">
-                <div class="col-sm-4 bg-c-lite-green user-profile">
+                <div class="col-sm-4 bg-dark user-profile">
                   <div class="card-block text-center text-white">
                     <div class="m-b-25">
                       <img
@@ -185,13 +191,13 @@ sistemasi{% endblock %} {% block content %}
                         alt="User-Profile-Image"
                       />
                     </div>
-                    <h6 class="f-w-600">
+                    <h6 class="f-w-600 student-name">
                       {{student.first_name}} {{ student.last_name}}
                     </h6>
                   </div>
                 </div>
-                <div class="col-sm-8">
-                  <div class="card-block">
+                <div class="col-sm-8" style="padding: 0;">
+                  <div class="card-block bg-warning">
                     <h6 class="m-b-20 p-b-5 b-b-default f-w-600">
                       Information
                     </h6>
@@ -207,7 +213,7 @@ sistemasi{% endblock %} {% block content %}
                             disabled
                             type="password"
                             class="input"
-                            style="border: 0; width: 70%"
+                            style="border: 0; width: 70%; background: transparent; color: #000;"
                             value="{{student.password}}"
                           />
                           <img
