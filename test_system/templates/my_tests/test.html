@@ -1,232 +1,126 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
 <html>
-
-    <head>
-
-
-          {% block title %}{% endblock %}
-        {% block content %}
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{% static 'css/Main.css' %}" rel="stylesheet"/>
-        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
-          <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    
+{% block title %}{% endblock %}
+<head>
+{% block content %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{% static 'css/Main.css' %}" rel="stylesheet"/>
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+ <link rel="stylesheet" href="{% static 'css/style1.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 <style>
-.button {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgb(145, 92, 182);
-  padding: 15px 40px;
-  border-radius: 4px;
-  font-weight: normal;
-  text-transform: uppercase;
-  transition: all 0.2s ease-in-out;
-}
+  .button {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgb(145, 92, 182);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+  }
 
-.glow-button:hover {
-  color: rgba(255, 255, 255, 1);
-  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
-}
+  .glow-button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  }
 
+  #ten-countdown{
+    text-align:center;
+    border: 5px solid #004853;
+    display:inline;
+    padding: 5px;
+    color: #004853;
+    font-family: Verdana, sans-serif, Arial;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  #sunil {
+    padding: 20px;
+    text-align: center;
+  }
+  #test{
+    font-size: 3rem;
+    border: 2px solid #001200;
+    border-radius: 5%;
+    width: 100%
+    
+  }
+  #table-test{
+    text-align:left;
+    border: 3px solid;
+  }
+  .question{
+    margin-bottom: 30px;
+  }
+  #click{
+    text-align: center;
+    padding: 21px 51px;
+    
+  }
+  .button-div{
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 </style>
-        <script src="{% static 'js/script3.js'%}"></script>
-              <script  src="{% static 'js/script.js'%}"></script>
-        <script src="{% static 'js/jquery-1.10.2.min.js'%}"></script>
-
-
-
-        </style>
-                <script LANGUAGE="Javascript">
-                <!--Start Javacrap here--
-                q1=0;
-                q2=0;
-                q3=0;
-                function Scoring(){
-                score = q1 + q2 + q3;
-                if(score<90){
-                alert("Sorry! Try again! ^_^")
-                }
-                else {
-                location = "redirect-to-congrats-page.html";}
-                }
-                function clear(){
-                q1 = 0;
-                q2 = 0;
-                q3 = 0;
-                }
-                //--End o' Javastuff-->
-                   </script><script language="JavaScript1.2">
-                if (window.Event)
-                document.captureEvents(Event.MOUSEUP);
-                function nocontextmenu()
-                {
-                event.cancelBubble = true
-                event.returnValue = false;
-                return false;
-                }
-                function norightclick(e)
-                {
-                if (window.Event)
-                {
-                if (e.which == 2 || e.which == 3)
-                return false;
-                }
-                else
-                if (event.button == 2 || event.button == 3)
-                {
-                event.cancelBubble = true
-                event.returnValue = false;
-                return false;
-                }
-                }
-                document.oncontextmenu = nocontextmenu;
-                document.onmousedown = norightclick;
-                   </script>
-                <script language="JavaScript"> <!--
-                var message="No Right Click."; // Message for the alert box
-                function click(e) {
-                if (document.all) {
-                if (event.button == 2) {
-                alert(message);
-                return false;
-                }
-                }
-                if (document.layers) {
-                if (e.which == 3) {
-                alert(message);
-                return false;
-                }
-                }
-                }
-                if (document.layers) {
-                document.captureEvents(Event.MOUSEDOWN);
-                }
-                document.onmousedown=click;
-                // --> </script>
-                <script>
-                document.onkeydown = function ()
-                {
-                 if (122 == event.keyCode)
-                 {
-                  event.keyCode = 0;
-                  return = false;
-                 }
-                }
-                </script>
-
-            <style>
-          #ten-countdown{
-            /* text-align: center; */
-           text-align:center;
-            border: 5px solid #004853;
-            display:inline;
-            padding: 5px;
-            color: #004853;
-            font-family: Verdana, sans-serif, Arial;
-            font-size: 40px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        #sunil {
-          padding: 20px;
-          text-align: center;
-        }
-            </style>
-
-
     </head>
-
     <body>
-
-      <section><div id="layer">
-             <div id="msg">
-
-                 <div id="zero">
-
-                 </div>
-             </div>
-
-      </div>
-    </section>
-
-
-
      <div id="stars"></div>
       <div id="stars2"></div>
       <div id="stars3"></div>
-
-
           <div class="main">
-
               <section class="signup">
-
                   <div class="container">
-
                       <div class="signup-content">
-
-
                               <h2 class="form-title" id="test">{{ test_name.fanlar }}</h2>
-                              <body id="sunil">
+                              <!-- timer -->
+                              <div id="sunil">
                                 <div id="ten-countdown"></div>
-                                <script  src="{% static 'js/script2.js'%}"></script>
-                              </body>
+                              </div>
 
 
-                              <center><form NAME="FormI" action="{% url 'my_tests:test' student_id test_id %}" method="POST"></center>
-
-                              <table style="text-align:left;">
-                            <ol>
+                            <center><form NAME="FormI" action="{% url 'my_tests:test' student_id test_id %}" method="POST"></center>
+                              <table border="1" id="table-test" >
+                            
                             {% for a in testlar %}
                                  {% csrf_token %}
-                              <tr><td><li type='1'>{{ a.question }}</li></td></tr>
+                                 <div class="question">
+                              <tr id="row-1">
+                                <td>
+                                  <li type='1'>{{ a.question }}</li></td>
+                              </tr>
                               <tr>
                               <td><input type="radio" name="{{a.question}}" id="{{a.A}}" value="A"> <label for="{{a.A}}">{{ a.A }}</label>
                               <br><input type="radio" name="{{a.question}}" id="{{a.B}}" value="B"> <label for="{{a.B}}">{{ a.B }}</label>
                               <br><input type="radio" name="{{a.question}}" id="{{a.C}}" value="C"> <label for="{{a.C}}">{{ a.C }}</label>
                               <br><input type="radio" name="{{a.question}}" id="{{a.D}}" value="D"> <label for="{{a.D}}">{{ a.D }}</label>
-
-
-
                               </tr>
+                            </div>
                             {% endfor %}
-</ol>
                               </table>
-
+                            </form>
+                            <div class="button-div">
                               <button type='submit' id='click' class="button glow-button">submit</button>
-
-                              </form>
-
-
-                              <!-------------------->
-
-                              <!-------------->
-
-
-
-
-
-                      </div>
+                            </div>
+                       
+                      </div> 
                   </div>
               </section>
-
-
     </body>
-<script src="{% static 'js/moving.js'%}"></script>
-
-
-
+    <script  src="{% static 'js/script2.js'%}"></script>
+    <script src="{% static 'js/script3.js'%}"></script>
+    <script  src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/jquery-1.10.2.min.js'%}"></script>
+    <script src="{% static 'js/moving.js'%}"></script>
 {% endblock %}
-
-
-
-
-
-
-
 </html>
